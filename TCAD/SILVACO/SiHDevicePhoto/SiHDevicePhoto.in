@@ -1,0 +1,38 @@
+go atlas
+#
+mesh  infile=./SiHDevice.str
+system rm -rfv ./SiHDevice_XRay.str ./SiHDevice_Dark.str
+#
+beam num=1 x.origin=22.5 y.origin=250.600 angle=270.0 power.file=../XRaySpectra/10kVp.txt
+#
+models conmob fldmob consrh
+#
+# Solving Dark Condition at first
+method gummel newton
+solve init
+solve v1=0.01 
+solve v2=0.01
+solve v1=1 vfinal=10 vstep=1 name=top_contact
+solve v2=1 vfinal=20 vstep=1 name=bottom_contact
+save outf=SiHDevice_Dark.str
+log outf=SiHDevice_XRaySpec.log
+#
+method newton
+solve previous
+solve b1=1000 beam=1 lambda=0.00013 wstep=0.000031 wfinal=0.00065
+log off
+#
+method gummel newton
+solve init
+solve previous
+solve previous b1=0
+solve v1=0.01 b1=1000
+solve v2=0.01 b1=1000
+solve v1=1 vfinal=10 vstep=1 name=top_contact b1=1000
+solve v2=1 vfinal=20 vstep=1 name=bottom_contact b1=1000
+save outf=SiHDevice_XRay.str
+#
+system tonyplot   SiHDevice_XRay.str -set ./SiHDevice_XRay.set &
+tonyplot   SiHDevice_XRay.str -set ./SiHDevice_XRay.set &
+#
+quit

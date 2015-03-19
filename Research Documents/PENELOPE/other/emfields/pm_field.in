@@ -1,0 +1,19 @@
+TITLE  Charged-particle transport in uniform EM fields.
+
+       >>>>>>>> Source definition.
+SKPAR  1        [Primary particles: 1=electron, 2=photon, 3=positron]
+SENERG 6.0e6            [Initial energy (monoenergetic sources only)]
+SPOSIT 0 0 0                              [Coordinates of the source]
+SDIREC 0 0                       [Beam axis direction angles, in deg]
+SAPERT 0                                      [Beam aperture, in deg]
+
+       >>>>>>>> Material data and simulation parameters.
+NMAT   1                      [Number of different materials, .le.10]
+SIMPAR 1 1.0e5 1.0e4 1.0e5 0.01 0.01 1e5 1e4   [M,EABS,C1,C2,WCC,WCR]
+PFNAME pm_field.mat              [Material definition file, 20 chars]
+
+       >>>>>>>> Geometry definition file.
+GEOMFN pm_field.geo              [Geometry definition file, 20 chars]
+
+NSIMSH 15          [Desired number of simulated showers, max=2**31-1]
+TIME   300                         [Allotted simulation time, in sec]

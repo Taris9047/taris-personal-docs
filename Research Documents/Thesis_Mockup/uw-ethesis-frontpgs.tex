@@ -1,0 +1,138 @@
+% T I T L E   P A G E
+% -------------------
+% The title page is counted as page `i' but we need to suppress the
+% page number.  We also don't want any headers or footers.
+\pagestyle{empty}
+\pagenumbering{roman}
+
+% The contents of the title page are specified in the "titlepage"
+% environment.
+\begin{titlepage}
+        \begin{center}
+        \vspace*{1.0cm}
+
+        \Huge
+        {\bf UW E-Thesis Template with Examples}
+
+        \vspace*{1.0cm}
+
+        \normalsize
+        by \\
+
+        \vspace*{1.0cm}
+
+        \Large
+        Pat Neugraad \\
+
+        \vspace*{3.0cm}
+
+        \normalsize
+        A thesis \\
+        presented to the University of Waterloo \\ 
+        in fulfillment of the \\
+        thesis requirement for the degree of \\
+        Master of Science \\
+        in \\
+        Zoology \\
+
+        \vspace*{2.0cm}
+
+        Waterloo, Ontario, Canada, 2007 \\
+
+        \vspace*{1.0cm}
+
+        \copyright\ Pat Neugraad 2007 \\
+        \end{center}
+\end{titlepage}
+
+% The rest of the front pages should contain no headers and be
+% numbered using roman numerals starting with `ii'
+\pagestyle{plain}
+\setcounter{page}{2}
+
+% D E C L A R A T I O N   P A G E
+% -------------------------------
+\ifthenelse{\boolean{ElectronicVersion}}{
+  % The following is the sample Delaration Page as provided by the GSO
+  % December 13th, 2006.  It is designed for an electronic thesis.
+  \noindent
+  I hereby declare that I am the sole author of this thesis.  This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+  \bigskip
+  
+  \noindent
+  I understand that my thesis may be made electronically available to the public.}{
+ % The following text was what was required back when the GSO acceped
+ % printed versions and you may want to continue to use it for your
+ % printed version.
+ \noindent
+ I hereby declare that I am the sole author of this thesis.
+
+ \smallskip
+
+ \noindent
+ I authorize the University of Waterloo to lend this thesis to other
+ institutions or individuals for the purpose of scholarly research.
+
+ \bigskip
+
+ \noindent
+ I further authorize the University of Waterloo to reproduce this
+ thesis by photocopying or by other means, in total or in part,
+ at the request of other institutions or individuals for the purpose
+ of scholarly research.
+}
+\newpage
+
+% A B S T R A C T
+% ---------------
+
+\begin{center}\textbf{Abstract}\end{center}
+
+This is the abstract.
+\newpage
+
+% A C K N O W L E D G E M E N T S
+% -------------------------------
+
+\begin{center}\textbf{Acknowledgements}\end{center}
+
+I would like to thank all the little people who made this possible.
+\newpage
+
+% D E D I C A T I O N
+% -------------------
+
+\begin{center}\textbf{Dedication}\end{center}
+
+This is dedicated to the one I love.
+\newpage
+
+% T A B L E   O F   C O N T E N T S
+% ---------------------------------
+\tableofcontents
+\newpage
+
+% L I S T   O F   T A B L E S
+% ---------------------------
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+
+% L I S T   O F   F I G U R E S
+% -----------------------------
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\newpage
+
+% L I S T   O F   S Y M B O L S
+% -----------------------------
+% \renewcommand{\nomname}{Nomenclature}
+% \addcontentsline{toc}{chapter}{\textbf{Nomenclature}}
+% \printglossary
+% \newpage
+
+% Change page numbering back to Arabic numerals
+\pagenumbering{arabic}
+

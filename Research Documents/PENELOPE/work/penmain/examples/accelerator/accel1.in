@@ -1,0 +1,41 @@
+TITLE  Simple accelerator head and water phantom (step 1)
+       A phase-space file named 'pm_psf_impdet_1.dat' is generated
+
+       >>>>>>>> Source definition.
+SKPAR  1        [Primary particles: 1=electron, 2=photon, 3=positron]
+SENERG 6e6              [Initial energy (monoenergetic sources only)]
+SPOSIT 0.0 0.0 -20.0                      [Coordinates of the source]
+SDIREC 0.0 0.0                   [Beam axis direction angles, in deg]
+
+       >>>>>>>> Material data and simulation parameters.
+NMAT   4                      [Number of different materials, .le.10]
+SIMPAR 1 1.0e5 1.0e4 1.0e5 0.1 0.1 5e3 1e4     [M,EABS,C1,C2,WCC,WCR]
+SIMPAR 2 1.0e5 1.0e4 1.0e5 0.2 0.2 5e3 1e4     [M,EABS,C1,C2,WCC,WCR]
+SIMPAR 3 1.0e5 1.0e4 1.0e5 0.2 0.2 5e3 1e4     [M,EABS,C1,C2,WCC,WCR]
+SIMPAR 4 1.0e5 1.0e4 1.0e5 0.2 0.2 5e3 1e4     [M,EABS,C1,C2,WCC,WCR]
+PFNAME accel.mat                 [Material definition file, 20 chars]
+
+       >>>>>>>> Geometry definition file.
+GEOMFN accel.geo                 [Geometry definition file, 20 chars]
+DSMAX  1 2.0e-2             [IB, Maximum step length (cm) in body IB]
+
+       >>>>>>>> Interaction forcing.
+IFORCE 1 1 4  15.0  0.1 5.0           [KB,KPAR,ICOL,FORCER,WLOW,WHIG]
+IFORCE 1 1 5  15.0  0.1 5.0           [KB,KPAR,ICOL,FORCER,WLOW,WHIG]
+
+       >>>>>>>> Emerging particles. Energy and angular distributions.
+NBE    1e4 6e6 100                [E-interval and no. of energy bins]
+NBTH   45                     [No. of bins for the polar angle THETA]
+NBPH   24                   [No. of bins for the azimuthal angle PHI]
+
+       >>>>>>>> Impact detectors (up to 5 different detectors).
+IMPDET 1e4 6e6 100 -1       [Energy window, no. of channels and IPSF]
+IDBODY 3                 [Active body; one line for each active body]
+
+       >>>>>>>> Job properties
+RESUME dump1.dat               [Resume from this dump file, 20 chars]
+DUMPTO dump1.dat                  [Generate this dump file, 20 chars]
+DUMPP  60                                    [Dumping period, in sec]
+
+NSIMSH 2.0e9                    [Desired number of simulated showers]
+TIME   2.0e5                       [Allotted simulation time, in sec]

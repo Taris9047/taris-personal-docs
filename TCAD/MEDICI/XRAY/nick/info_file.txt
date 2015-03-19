@@ -1,0 +1,85 @@
+
+
+*******get the number of photons for mammo for 20kev*********
+
+Mammo, mean exposure: 12mR (= P, this is the value that will be used)
+Mammo, exposure range: 0.6-240mR
+From:
+J.A. Rowlands and J. Yorkston, 
+"Handbook of Medical Imaging: Physics and Psychophysics", SPIE Press,
+2000, ch.4: Flat Panel Detectors for Digital Radiography
+
+conversion of exposure to number of photons per mm2:
+at 20keV, Theta = 5.05552e+07 ph/.mm2/R
+This was calculated using the energy absorption coefficient of air and the
+following reference:
+H. E. Johns and J. R. Cunningham, The Physics of Radiology, Fourth edition,
+Thomas, Springfield, IL, 1983
+
+No = Theta*P*A = number of photons incident on the device, where P is the
+exposure (R), A is the 
+surface area the photons are incident upon. If the number of photons per unit
+area are required, then use:
+No = Theta*P = number of photons per area.
+
+
+*******get the energy deposition profile*******
+
+Note that the following equations assume No is the number of incident photons
+(ph). Concentration of photons (ph/m) that interact at depth 'x':
+N(x)=No*mu*exp(-x*mu)
+where mu is the attenuation coefficient (1/m).
+
+Energy deposited (concentration) at depth 'x' (assumes each interacted photon 
+deposits all its energy locally):
+Edep(x) = Eph*No*mu*exp(-x*mu)
+where Eph is the energy of the photons, and Edep (keV/m) is energy deposited.
+
+mu table found in: att_silicon.txt (1st column photon energy (keV), 2nd column
+attenuation coefficient (1/m))
+Derived from:
+F. Salvat and J.M. Fernandez-Varea and J. Sempau, PENELOPE-2006: A code system 
+for Monte Carlo simulation of electron and photon transport,
+Workshop proceedings, Organisation for economic co-operation and
+development, 2006
+
+
+*******use klein's rule for conversion energy*******
+
+Electron-hole pair creation energy
+W ~= 2.8*Eg + 0.5 eV
+From:
+S. O. Kasap and J. A. Rowlands, Photoconductor selection for digital flat 
+panel x-ray image detectors based on the dark current, 2000, Papers from the 
+ninth canadian semiconductor technology conference, v. 18, n. 2, pp. 615-620
+
+#Silicon band gap Eg = 1.12eV
+#So W = 3.636eV
+Silicon band gap Eg = 1.15eV
+So, W = 3.72 eV
+
+Concentration of electron-hole pairs (ehp/m) as a function of depth 'x':
+EHP(x) = Edep(x) / W
+Remember that Edep and W should have the same energy units, i.e. both in eV or 
+keV.
+
+
+*******generate concentration*******
+
+Using all of the above, the concentration of electron hole pairs is:
+EHP(x) = (1/W(keV))*Eph(keV)*mu(1/m)*exp(-x(m)*mu(1/m))*Theta(ph/mm^2/R)*P(R)*A(mm^2)
+
+However, in Medici you will want the EHP(x,y,z), which is the 3D 
+concentration of electron hole pairs. This will change the equation to the 
+following:
+EHP(x,y,z) = (1m/100cm)*(1m/100cm)*(1m/100cm)*(1000mm/1m)*(1000mm/1m)*(1/W(keV))*Eph(keV)*mu(1/m)*exp(-x(m)*mu(1/m))*Theta(ph/mm^2/R)*P(R)
+where I have converted it to number of electron-hole pairs per centimeter cubed
+and there is no variation of this quantity along 'y' or 'z'. You're initial 
+concentration of electrons and holes will be identical using this method. Also 
+note that x=0 is the top of the device, where the photons hit first. 
+
+I have attached the EHP(x,y,z)/cm^3 file, ehp.txt, where the first column
+is depth 'x' and the second column is EHP(x,y,z)/cm^3. 
+
+
+

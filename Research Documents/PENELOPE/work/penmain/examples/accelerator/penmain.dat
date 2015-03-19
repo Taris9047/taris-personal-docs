@@ -1,0 +1,763 @@
+
+
+   ********************************************
+   **   Program PENMAIN.  Input data file.   **
+   ********************************************
+
+   Date and time: 14th Oct 2008. 16:44:11
+
+   Simple accelerator head and water phantom (step 1)                                                                      
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Source description.
+   Primary particles: electrons
+   Initial energy =  6.000000E+06 eV
+   Coordinates of centre:     SX0 =  0.000000E+00 cm
+                              SY0 =  0.000000E+00 cm
+                              SZ0 = -2.000000E+01 cm
+   Beam direction angles:   THETA =  0.000000E+00 deg
+                              PHI =  0.000000E+00 deg
+   Beam aperture:           ALPHA =  0.000000E+00 deg
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Material data and simulation parameters.
+   Number of different materials =  4
+
+   ****  1st material
+   Electron absorption energy =  1.000000E+05 eV
+     Photon absorption energy =  1.000000E+04 eV
+   Positron absorption energy =  1.000000E+05 eV
+   Electron-positron simulation parameters:
+    C1 = 1.000000E-01,      C2 = 1.000000E-01
+   Wcc = 5.000000E+03 eV,  Wcr = 1.000000E+04 eV
+
+   ****  2nd material
+   Electron absorption energy =  1.000000E+05 eV
+     Photon absorption energy =  1.000000E+04 eV
+   Positron absorption energy =  1.000000E+05 eV
+   Electron-positron simulation parameters:
+    C1 = 2.000000E-01,      C2 = 2.000000E-01
+   Wcc = 5.000000E+03 eV,  Wcr = 1.000000E+04 eV
+
+   ****  3rd material
+   Electron absorption energy =  1.000000E+05 eV
+     Photon absorption energy =  1.000000E+04 eV
+   Positron absorption energy =  1.000000E+05 eV
+   Electron-positron simulation parameters:
+    C1 = 2.000000E-01,      C2 = 2.000000E-01
+   Wcc = 5.000000E+03 eV,  Wcr = 1.000000E+04 eV
+
+   ****  4th material
+   Electron absorption energy =  1.000000E+05 eV
+     Photon absorption energy =  1.000000E+04 eV
+   Positron absorption energy =  1.000000E+05 eV
+   Electron-positron simulation parameters:
+    C1 = 2.000000E-01,      C2 = 2.000000E-01
+   Wcc = 5.000000E+03 eV,  Wcr = 1.000000E+04 eV
+
+   PENELOPE's material definition file: accel.mat           
+
+  >>> SUMGA. Gauss adaptive-bipartition quadrature.
+  XL = 1.000000000000E+02,  XU = 1.100694171252E+02,  TOL = 1.0E-10
+  NCALLS = 11020,  SUMGA = 2.1773051204275E+01,  ERR = 9.5E-04
+  Number of open subintervals = 256
+  WARNING: the required accuracy has not been attained.
+
+
+  >>> SUMGA. Gauss adaptive-bipartition quadrature.
+  XL = 1.000000000000E+02,  XU = 1.100694171252E+02,  TOL = 1.0E-10
+  NCALLS = 11020,  SUMGA = 2.1773051204275E+01,  ERR = 9.5E-04
+  Number of open subintervals = 256
+  WARNING: the required accuracy has not been attained.
+
+
+  >>> SUMGA. Gauss adaptive-bipartition quadrature.
+  XL = 3.162277660168E+00,  XU = 3.480700588428E+00,  TOL = 1.0E-10
+  NCALLS = 11180,  SUMGA = 1.4450259398462E-01,  ERR = 2.6E-04
+  Number of open subintervals = 256
+  WARNING: the required accuracy has not been attained.
+
+
+   PENGEOM's geometry definition file: accel.geo           
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Maximum allowed step lengths of electrons and positrons.
+   * Body =   1,   DSMAX =  2.000000E-02 cm
+   * Body =   2,   DSMAX =  1.000000E+20 cm
+   * Body =   3,   DSMAX =  1.000000E+20 cm
+   * Body =   4,   DSMAX =  1.000000E+20 cm
+   * Body =   5,   DSMAX =  1.000000E+20 cm
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Interaction forcing: FORCE(IBODY,KPAR,ICOL)
+   FORCE(   1,1,4) = 1.500000E+01,  weight window = ( 1.00E-01, 5.00E+00)
+   FORCE(   1,1,5) = 1.500000E+01,  weight window = ( 1.00E-01, 5.00E+00)
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Energy and angular distributions of emerging particles.
+   E:       NBE = 100,  EMIN = 1.000000E+04 eV,  EMAX = 6.000000E+06 eV
+   Theta:  NBTH =  45
+   Phi:    NBPH =  24
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Impact detector # 1
+   Energy window = ( 1.00000E+04, 6.00000E+06) eV, no. of channels =  100
+   Output phase-space file: pm_psf_impdet_1.dat  (IPSF=-1)
+   Output energy spectrum: pm_spc_impdet_1.dat 
+   Active body =    3
+   Detected particles = electrons, photons and positrons
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Job characteristics.
+   Resume simulation from previous dump file: dump1.dat           
+   Write final counter values on the dump file: dump1.dat           
+   Dumping period: DUMPP = 6.000000E+01
+
+   Number of showers to be simulated = 2.000000E+09
+   Computation time available =  2.000000E+05 sec
+
+
+   ------------------------------------------------------------------------
+   WARNING: Could not resume from dump file...
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  5.984290E+01 sec
+   Simulation speed ........................  5.666504E+01 showers/sec
+
+
+   Simulated primary showers ...............  3.391000E+03
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  6.510000E+02
+   Absorbed primary particles ..............  2.740000E+03
+
+   Fractional transmission ............  3.931977E-05 +- 8.3E-05
+   Fractional backscattering ..........  2.128576E-01 +- 2.7E-02
+   Fractional absorption ..............  8.080212E-01 +- 2.0E-02
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 3.931977E-05 | 8.237491E-03 | 1.965988E-05 |
+   |               |  +- 8.3E-05  |  +- 1.2E-03  |  +- 5.9E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.087880E-02 | 3.919788E-01 | 2.359186E-04 |
+   |               |  +- 6.6E-03  |  +- 1.3E-02  |  +- 2.0E-04  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.995675E+00 | 5.866431E+00 | 2.886071E-02 |
+   |               |  +- 1.0E-01  |  +- 1.2E-01  |  +- 2.3E-03  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.533077E+06 +- 8.1E+04 eV    (effic. = 4.74E+02)
+      Body    2 ......  4.857459E+05 +- 1.6E+04 eV    (effic. = 1.39E+02)
+      Body    3 ......  1.110276E+05 +- 7.2E+03 eV    (effic. = 3.58E+01)
+      Body    4 ......  0.000000E+00 +- 0.0E+00 eV    (effic. = 0.00E+00)
+      Body    5 ......  6.510562E+01 +- 2.6E+01 eV    (effic. = 9.59E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.110276E+05 +- 7.2E+03 eV    (effic. = 3.58E+01)
+
+   Last random seeds =  507772475 , 2062657903
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  1.197698E+02 sec
+   Simulation speed ........................  5.652511E+01 showers/sec
+
+
+   Simulated primary showers ...............  6.770000E+03
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  1.252000E+03
+   Absorbed primary particles ..............  5.518000E+03
+
+   Fractional transmission ............  2.954210E-05 +- 5.1E-05
+   Fractional backscattering ..........  2.058099E-01 +- 1.9E-02
+   Fractional absorption ..............  8.150665E-01 +- 1.4E-02
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 2.954210E-05 | 9.167898E-03 | 9.847366E-06 |
+   |               |  +- 5.1E-05  |  +- 9.2E-04  |  +- 3.0E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.087642E-02 | 3.924865E-01 | 2.067947E-04 |
+   |               |  +- 4.7E-03  |  +- 9.6E-03  |  +- 1.4E-04  |
+   --------------------------------------------------------------
+   |   absorbed    | 4.004106E+00 | 5.897095E+00 | 2.931561E-02 |
+   |               |  +- 7.1E-02  |  +- 8.3E-02  |  +- 1.6E-03  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.558484E+06 +- 5.7E+04 eV    (effic. = 4.80E+02)
+      Body    2 ......  4.899292E+05 +- 1.1E+04 eV    (effic. = 1.41E+02)
+      Body    3 ......  1.109147E+05 +- 5.1E+03 eV    (effic. = 3.56E+01)
+      Body    4 ......  1.379736E+01 +- 4.1E+01 eV    (effic. = 8.35E-03)
+      Body    5 ......  6.905514E+01 +- 1.9E+01 eV    (effic. = 9.79E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.109147E+05 +- 5.1E+03 eV    (effic. = 3.56E+01)
+
+   Last random seeds =  124428654 , 1675251099
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  1.796847E+02 sec
+   Simulation speed ........................  5.650454E+01 showers/sec
+
+
+   Simulated primary showers ...............  1.015300E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  1.856000E+03
+   Absorbed primary particles ..............  8.297000E+03
+
+   Fractional transmission ............  1.969861E-05 +- 3.4E-05
+   Fractional backscattering ..........  2.033816E-01 +- 1.5E-02
+   Fractional absorption ..............  8.171969E-01 +- 1.2E-02
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.969861E-05 | 9.048229E-03 | 6.566204E-06 |
+   |               |  +- 3.4E-05  |  +- 7.5E-04  |  +- 2.0E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.057848E-02 | 3.930464E-01 | 2.560819E-04 |
+   |               |  +- 3.8E-03  |  +- 7.9E-03  |  +- 1.2E-04  |
+   --------------------------------------------------------------
+   |   absorbed    | 4.002042E+00 | 5.891789E+00 | 2.957418E-02 |
+   |               |  +- 5.8E-02  |  +- 6.8E-02  |  +- 1.3E-03  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.555403E+06 +- 4.7E+04 eV    (effic. = 4.78E+02)
+      Body    2 ......  4.909009E+05 +- 9.3E+03 eV    (effic. = 1.39E+02)
+      Body    3 ......  1.108729E+05 +- 4.2E+03 eV    (effic. = 3.52E+01)
+      Body    4 ......  1.343574E+01 +- 2.9E+01 eV    (effic. = 1.07E-02)
+      Body    5 ......  6.579780E+01 +- 1.5E+01 eV    (effic. = 9.48E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.108729E+05 +- 4.2E+03 eV    (effic. = 3.52E+01)
+
+   Last random seeds =  233867466 ,  800052506
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  2.393566E+02 sec
+   Simulation speed ........................  5.636360E+01 showers/sec
+
+
+   Simulated primary showers ...............  1.349100E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  2.469000E+03
+   Absorbed primary particles ..............  1.102200E+04
+
+   Fractional transmission ............  1.976626E-05 +- 3.0E-05
+   Fractional backscattering ..........  2.037210E-01 +- 1.3E-02
+   Fractional absorption ..............  8.169891E-01 +- 1.0E-02
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.976626E-05 | 9.235787E-03 | 4.941566E-06 |
+   |               |  +- 3.0E-05  |  +- 6.6E-04  |  +- 1.5E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.071010E-02 | 3.933388E-01 | 2.421367E-04 |
+   |               |  +- 3.3E-03  |  +- 6.9E-03  |  +- 1.0E-04  |
+   --------------------------------------------------------------
+   |   absorbed    | 4.004917E+00 | 5.899276E+00 | 2.964445E-02 |
+   |               |  +- 5.0E-02  |  +- 5.8E-02  |  +- 1.2E-03  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.554907E+06 +- 4.0E+04 eV    (effic. = 4.81E+02)
+      Body    2 ......  4.925129E+05 +- 8.1E+03 eV    (effic. = 1.40E+02)
+      Body    3 ......  1.111359E+05 +- 3.7E+03 eV    (effic. = 3.47E+01)
+      Body    4 ......  1.200763E+01 +- 2.3E+01 eV    (effic. = 1.06E-02)
+      Body    5 ......  6.404584E+01 +- 1.3E+01 eV    (effic. = 9.15E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.111359E+05 +- 3.7E+03 eV    (effic. = 3.47E+01)
+
+   Last random seeds =  323089622 , 1554156290
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  2.989576E+02 sec
+   Simulation speed ........................  5.644279E+01 showers/sec
+
+
+   Simulated primary showers ...............  1.687400E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  3.137000E+03
+   Absorbed primary particles ..............  1.373700E+04
+
+   Fractional transmission ............  1.580341E-05 +- 2.4E-05
+   Fractional backscattering ..........  2.063648E-01 +- 1.2E-02
+   Fractional absorption ..............  8.140927E-01 +- 9.0E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.580341E-05 | 9.339813E-03 | 7.901703E-06 |
+   |               |  +- 2.4E-05  |  +- 5.9E-04  |  +- 1.7E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.045751E-02 | 3.935562E-01 | 2.410019E-04 |
+   |               |  +- 2.9E-03  |  +- 6.2E-03  |  +- 9.2E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.995871E+00 | 5.887507E+00 | 2.952471E-02 |
+   |               |  +- 4.5E-02  |  +- 5.2E-02  |  +- 1.0E-03  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.545837E+06 +- 3.6E+04 eV    (effic. = 4.77E+02)
+      Body    2 ......  4.921309E+05 +- 7.2E+03 eV    (effic. = 1.39E+02)
+      Body    3 ......  1.109879E+05 +- 3.3E+03 eV    (effic. = 3.44E+01)
+      Body    4 ......  1.100127E+01 +- 1.9E+01 eV    (effic. = 1.06E-02)
+      Body    5 ......  6.290846E+01 +- 1.2E+01 eV    (effic. = 8.95E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.109879E+05 +- 3.3E+03 eV    (effic. = 3.44E+01)
+
+   Last random seeds = 1706343809 ,  925851549
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  3.586765E+02 sec
+   Simulation speed ........................  5.647708E+01 showers/sec
+
+
+   Simulated primary showers ...............  2.025700E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  3.809000E+03
+   Absorbed primary particles ..............  1.644800E+04
+
+   Fractional transmission ............  1.645522E-05 +- 2.2E-05
+   Fractional backscattering ..........  2.087970E-01 +- 1.1E-02
+   Fractional absorption ..............  8.119662E-01 +- 8.2E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.645522E-05 | 9.343272E-03 | 6.582087E-06 |
+   |               |  +- 2.2E-05  |  +- 5.4E-04  |  +- 1.4E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.076319E-02 | 3.944809E-01 | 2.534103E-04 |
+   |               |  +- 2.7E-03  |  +- 5.7E-03  |  +- 8.6E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.989952E+00 | 5.882711E+00 | 2.973787E-02 |
+   |               |  +- 4.1E-02  |  +- 4.8E-02  |  +- 9.6E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.543211E+06 +- 3.3E+04 eV    (effic. = 4.77E+02)
+      Body    2 ......  4.911409E+05 +- 6.6E+03 eV    (effic. = 1.40E+02)
+      Body    3 ......  1.109990E+05 +- 3.0E+03 eV    (effic. = 3.43E+01)
+      Body    4 ......  9.164015E+00 +- 1.5E+01 eV    (effic. = 8.81E-03)
+      Body    5 ......  6.377729E+01 +- 1.1E+01 eV    (effic. = 8.95E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.109990E+05 +- 3.0E+03 eV    (effic. = 3.43E+01)
+
+   Last random seeds = 1241475297 , 1341401185
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  4.182034E+02 sec
+   Simulation speed ........................  5.642230E+01 showers/sec
+
+
+   Simulated primary showers ...............  2.359600E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  4.453000E+03
+   Absorbed primary particles ..............  1.914300E+04
+
+   Fractional transmission ............  1.695203E-05 +- 2.1E-05
+   Fractional backscattering ..........  2.091795E-01 +- 1.0E-02
+   Fractional absorption ..............  8.112816E-01 +- 7.6E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.695203E-05 | 9.303837E-03 | 5.650675E-06 |
+   |               |  +- 2.1E-05  |  +- 5.0E-04  |  +- 1.2E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.046110E-02 | 3.947053E-01 | 2.571057E-04 |
+   |               |  +- 2.5E-03  |  +- 5.3E-03  |  +- 8.1E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.990134E+00 | 5.877115E+00 | 2.963779E-02 |
+   |               |  +- 3.8E-02  |  +- 4.4E-02  |  +- 8.8E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.540235E+06 +- 3.1E+04 eV    (effic. = 4.73E+02)
+      Body    2 ......  4.907972E+05 +- 6.1E+03 eV    (effic. = 1.40E+02)
+      Body    3 ......  1.104498E+05 +- 2.8E+03 eV    (effic. = 3.40E+01)
+      Body    4 ......  1.196219E+01 +- 1.6E+01 eV    (effic. = 1.21E-02)
+      Body    5 ......  6.157331E+01 +- 9.6E+00 eV    (effic. = 8.90E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.104498E+05 +- 2.8E+03 eV    (effic. = 3.40E+01)
+
+   Last random seeds = 1778451459 ,  392894303
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  4.780423E+02 sec
+   Simulation speed ........................  5.639877E+01 showers/sec
+
+
+   Simulated primary showers ...............  2.696100E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  5.038000E+03
+   Absorbed primary particles ..............  2.192300E+04
+
+   Fractional transmission ............  1.483624E-05 +- 1.8E-05
+   Fractional backscattering ..........  2.070077E-01 +- 9.4E-03
+   Fractional absorption ..............  8.131375E-01 +- 7.1E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.483624E-05 | 9.265235E-03 | 4.945415E-06 |
+   |               |  +- 1.8E-05  |  +- 4.6E-04  |  +- 1.0E-05  |
+   --------------------------------------------------------------
+   | backscattered | 2.014515E-02 | 3.950027E-01 | 2.769432E-04 |
+   |               |  +- 2.3E-03  |  +- 4.9E-03  |  +- 7.8E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.987790E+00 | 5.882841E+00 | 2.953896E-02 |
+   |               |  +- 3.6E-02  |  +- 4.1E-02  |  +- 8.2E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.545871E+06 +- 2.9E+04 eV    (effic. = 4.75E+02)
+      Body    2 ......  4.904170E+05 +- 5.7E+03 eV    (effic. = 1.40E+02)
+      Body    3 ......  1.107593E+05 +- 2.6E+03 eV    (effic. = 3.42E+01)
+      Body    4 ......  1.136156E+01 +- 1.4E+01 eV    (effic. = 1.20E-02)
+      Body    5 ......  5.993358E+01 +- 8.7E+00 eV    (effic. = 8.94E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.107593E+05 +- 2.6E+03 eV    (effic. = 3.42E+01)
+
+   Last random seeds =  599774521 ,  743485945
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  5.378043E+02 sec
+   Simulation speed ........................  5.635507E+01 showers/sec
+
+
+   Simulated primary showers ...............  3.030800E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  5.663000E+03
+   Absorbed primary particles ..............  2.464500E+04
+
+   Fractional transmission ............  1.539747E-05 +- 1.7E-05
+   Fractional backscattering ..........  2.073512E-01 +- 8.9E-03
+   Fractional absorption ..............  8.131516E-01 +- 6.7E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.539747E-05 | 9.317672E-03 | 4.399279E-06 |
+   |               |  +- 1.7E-05  |  +- 4.4E-04  |  +- 9.3E-06  |
+   --------------------------------------------------------------
+   | backscattered | 2.050284E-02 | 3.959637E-01 | 2.617571E-04 |
+   |               |  +- 2.2E-03  |  +- 4.7E-03  |  +- 7.2E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.987990E+00 | 5.886551E+00 | 2.962914E-02 |
+   |               |  +- 3.4E-02  |  +- 3.9E-02  |  +- 7.8E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.549244E+06 +- 2.7E+04 eV    (effic. = 4.77E+02)
+      Body    2 ......  4.903227E+05 +- 5.4E+03 eV    (effic. = 1.40E+02)
+      Body    3 ......  1.108317E+05 +- 2.4E+03 eV    (effic. = 3.43E+01)
+      Body    4 ......  1.169545E+01 +- 1.4E+01 eV    (effic. = 1.25E-02)
+      Body    5 ......  5.972382E+01 +- 8.1E+00 eV    (effic. = 9.09E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.108317E+05 +- 2.4E+03 eV    (effic. = 3.43E+01)
+
+   Last random seeds = 1867747307 , 2022794139
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  5.958394E+02 sec
+   Simulation speed ........................  5.616782E+01 showers/sec
+
+
+   Simulated primary showers ...............  3.346700E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  6.280000E+03
+   Absorbed primary particles ..............  2.718700E+04
+
+   Fractional transmission ............  1.593610E-05 +- 1.7E-05
+   Fractional backscattering ..........  2.081314E-01 +- 8.5E-03
+   Fractional absorption ..............  8.123525E-01 +- 6.4E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.593610E-05 | 9.288752E-03 | 3.984024E-06 |
+   |               |  +- 1.7E-05  |  +- 4.2E-04  |  +- 8.5E-06  |
+   --------------------------------------------------------------
+   | backscattered | 2.048386E-02 | 3.962670E-01 | 2.549775E-04 |
+   |               |  +- 2.1E-03  |  +- 4.4E-03  |  +- 6.7E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.988369E+00 | 5.883312E+00 | 2.960130E-02 |
+   |               |  +- 3.2E-02  |  +- 3.7E-02  |  +- 7.4E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.547592E+06 +- 2.6E+04 eV    (effic. = 4.76E+02)
+      Body    2 ......  4.903816E+05 +- 5.1E+03 eV    (effic. = 1.39E+02)
+      Body    3 ......  1.108290E+05 +- 2.3E+03 eV    (effic. = 3.42E+01)
+      Body    4 ......  1.315975E+01 +- 1.4E+01 eV    (effic. = 1.25E-02)
+      Body    5 ......  6.023896E+01 +- 7.8E+00 eV    (effic. = 9.02E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.108290E+05 +- 2.3E+03 eV    (effic. = 3.42E+01)
+
+   Last random seeds =  972904569 , 1296711109
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  6.492753E+02 sec
+   Simulation speed ........................  5.576833E+01 showers/sec
+
+
+   Simulated primary showers ...............  3.620900E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  6.803000E+03
+   Absorbed primary particles ..............  2.940600E+04
+
+   Fractional transmission ............  1.657047E-05 +- 1.7E-05
+   Fractional backscattering ..........  2.082687E-01 +- 8.1E-03
+   Fractional absorption ..............  8.121185E-01 +- 6.2E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.657047E-05 | 9.297873E-03 | 3.682326E-06 |
+   |               |  +- 1.7E-05  |  +- 4.0E-04  |  +- 7.8E-06  |
+   --------------------------------------------------------------
+   | backscattered | 2.038720E-02 | 3.963508E-01 | 2.503982E-04 |
+   |               |  +- 2.0E-03  |  +- 4.3E-03  |  +- 6.4E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.990409E+00 | 5.882996E+00 | 2.961142E-02 |
+   |               |  +- 3.1E-02  |  +- 3.6E-02  |  +- 7.1E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.547408E+06 +- 2.5E+04 eV    (effic. = 4.72E+02)
+      Body    2 ......  4.904151E+05 +- 4.9E+03 eV    (effic. = 1.39E+02)
+      Body    3 ......  1.112300E+05 +- 2.2E+03 eV    (effic. = 3.40E+01)
+      Body    4 ......  1.311679E+01 +- 1.4E+01 eV    (effic. = 1.28E-02)
+      Body    5 ......  6.156395E+01 +- 7.6E+00 eV    (effic. = 9.03E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.112300E+05 +- 2.2E+03 eV    (effic. = 3.40E+01)
+
+   Last random seeds =  199054350 , 1449592068
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  7.047949E+02 sec
+   Simulation speed ........................  5.543315E+01 showers/sec
+
+
+   Simulated primary showers ...............  3.906900E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  7.333000E+03
+   Absorbed primary particles ..............  3.173600E+04
+
+   Fractional transmission ............  1.535744E-05 +- 1.5E-05
+   Fractional backscattering ..........  2.080354E-01 +- 7.8E-03
+   Fractional absorption ..............  8.123064E-01 +- 5.9E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.535744E-05 | 9.286135E-03 | 3.412765E-06 |
+   |               |  +- 1.5E-05  |  +- 3.9E-04  |  +- 7.2E-06  |
+   --------------------------------------------------------------
+   | backscattered | 2.034179E-02 | 3.966657E-01 | 2.491319E-04 |
+   |               |  +- 1.9E-03  |  +- 4.1E-03  |  +- 6.2E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.992052E+00 | 5.882156E+00 | 2.953066E-02 |
+   |               |  +- 3.0E-02  |  +- 3.4E-02  |  +- 6.8E-04  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  4.549421E+06 +- 2.4E+04 eV    (effic. = 4.70E+02)
+      Body    2 ......  4.901101E+05 +- 4.7E+03 eV    (effic. = 1.38E+02)
+      Body    3 ......  1.111487E+05 +- 2.2E+03 eV    (effic. = 3.40E+01)
+      Body    4 ......  1.260903E+01 +- 1.3E+01 eV    (effic. = 1.25E-02)
+      Body    5 ......  6.290937E+01 +- 7.5E+00 eV    (effic. = 8.99E-01)
+
+   Average incoming energies (impact detectors):
+      Detector # 1 ...  1.111487E+05 +- 2.2E+03 eV    (effic. = 3.40E+01)
+
+   Last random seeds = 1989535961 , 1523727402
+
+   ------------------------------------------------------------------------
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  7.584307E+02 sec
+   Simulation speed ........................  5.517973E+01 showers/sec
+
+
+   Simulated primary showers ...............  4.185000E+04
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  7.845000E+03
+   Absorbed primary particles ..............  3.400500E+04
+
+   Fractional transmission ............  1.752290E-05 +- 1.6E-05
+   Fractional backscattering ..........  2.079363E-01 +- 7.6E-03
+   Fractional absorption ..............  8.125448E-01 +- 5.7E-03
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.752290E-05 | 9.347670E-03 | 3.185982E-06 |
+   |               |  +- 1.6E-05  |  +- 3.8E-04  |  +- 6.8E-06  |
+   --------------------------------------------------------------
+   | backscattered | 2.048108E-02 | 3.965368E-01 | 2.453206E-04 |
+   |               |  +- 1.9E-03  |  +- 4.0E-03  |  +- 5.9E-05  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.988704E+00 | 5.880061E+00 | 2.954520E-02 |
+   |               |  +- 2.9E-02  |  +- 3.3E-02  |  +- 6.6E-04  |

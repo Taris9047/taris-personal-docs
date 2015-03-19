@@ -1,0 +1,91 @@
+go atlas
+title Polymer based UV detector
+#set sNAME='PI2010_PTCBI'
+#
+# Material thickness defined here
+set tPI2010=0.180
+set tPTCBI=0.040
+set tCUPC=0.030
+set tAL=0.080
+#
+# Lateral definition
+set lPAD=5.0
+set lDET=5.0
+#
+# mesh definition goes here
+mesh 
+x.mesh loc=0.0 spacing=1.0
+x.mesh loc=$lPAD spacing=1.0
+x.mesh loc=$lPAD+$lDET spacing=1.0
+x.mesh loc=$lPAD+$lDET+$lPAD spacing=1.0
+#
+y.mesh loc=0 spacing=0.01
+y.mesh loc=-$tAL spacing=0.01
+y.mesh loc=-$tAL-$tPI2010 spacing=0.01
+y.mesh loc=-$tAL-$tPI2010-$tPTCBI spacing=0.01
+# y.mesh loc=-$tAL-$tPI2010-$tPTCBI-$tCUPC spacing=0.01 
+#
+# defining device region
+region num=1 y.min=-$tAL-$tPI2010 y.max=0 user.material=PI2010
+region num=2 y.min=-$tAL-$tPI2010-$tPTCBI y.max=-$tAL-$tPI2010 user.material=PTCBI
+# region num=3 y.min=-$tAL-$tPI2010-$tPTCBI-$tCUPC y.max=-$tAL-$tPI2010-$tPTCBI user.material=CUPC 
+region num=4 y.min=0 y.max=3000 material=oxide
+#
+# electrode definition
+electrode num=1 x.min=0 x.max=$lPAD y.min=-$tAL y.max=0.0 name=contA
+electrode num=1 x.min=$lPAD+$lDET x.max=$lPAD+$lDET+$lPAD y.min=-$tAL y.max=0.0 name=contB
+#
+# define contacts
+contact num=1 aluminum
+contact num=2 aluminum
+#
+# doping uniform region=1 conc=1e15 p.type
+# doping uniform region=2 conc=1e15 p.type
+# doping uniform region=3 conc=1e15 p.type
+#
+# setting material parameter for PI2010 (gotta change this)
+material region=1 material=PI2010 user.group=semiconductor \
+	eg300=2.1 nc300=2.5e19 nv300=2.5e19 permittivity=3.0 \
+	taun0=1e-9 taup0=1e-9 affinitiy=2.8 arichn=120 \
+	rst.exciton=0.5 taus.exciton=1e-9 lds.exciton=0.01 \
+	real.index=1.67 
+#
+material region=2 material=PTCBI user.group=semiconductor \
+	eg300=2.1 nc300=2.5e19 nv300=2.5e19 permittivity=3.0 \
+	taun0=1e-9 taup0=1e-9 affinitiy=2.8 arichn=120 \
+	rst.exciton=0.5 taus.exciton=1e-9 lds.exciton=0.01 \
+	real.index=1.67 
+#
+# material region=3 material=CUPC user.group=semiconductor \
+#	eg300=2.1 nc300=2.5e19 nv300=2.5e19 permittivity=3.0 \
+#	taun0=1e-9 taup0=1e-9 affinitiy=2.8 arichn=120 \
+#	rst.exciton=0.5 taus.exciton=1e-9 lds.exciton=0.01 \
+#	real.index=1.67 
+#
+# mobility parameter definition
+mobility region=1 material=PI2010 deltaen.pfmob=0.48 deltaep.pfmob=0.48 betan.pfmob=3.7e-4 betap.pfmob=3.7e-4 mun=.5e-5 mup=.5e-4
+mobility region=2 material=PTCBI deltaen.pfmob=0.48 deltaep.pfmob=0.48 betan.pfmob=3.7e-4 betap.pfmob=3.7e-4 mun=.5e-5 mup=.5e-4
+#
+# simulation model definition
+models temp=300 singlet langevin pfmob print 
+method itlimit=50
+solve init
+save outf=Type1.str
+tonyplot Type1.str
+#
+# now... simulate up to 100 V bias
+log outf=Type1.log
+method gummel newton
+solve init
+solve v1=0.0
+solve v2=0.01
+solve v2=0.05
+#
+method newton
+solve v2=1 vfinal=100 vstep=1 name=contB
+log off
+save outf=P100v.str
+#
+#tonyplot Type1.log
+#
+quit

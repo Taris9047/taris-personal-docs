@@ -1,0 +1,68 @@
+TITLE			Synopsys MEDICI Example 6 - Single Event Upset Simulation
+COMMENT		P+/EPI/N+ Structure Using Cylinderical Coordinates
+COMMENT		Define a non-uniform mesh using cylinderical coordinates
++					(the x-direction corresponds to the radial direction).
++					Put the finest grid along the r=0 column and at the junction
+
+MESH			CYLINDRI
+X.MESH		WIDTH=3.0 H1=0.01 H2=0.30
+Y.MESH		DEPTH=0.3 H1=0.10
+Y.MESH		DEPTH=3.7 H1=0.10 H2=0.50
+
+REGION		NAME=Silicon	SILICON
+
+COMMENT		Electrodes:
+ELECTR		NAME=Drain TOP X.MAX=1.0
+ELECTR		NAME=Substrate BOTTOM
+
+COMMENT		Profiles for the Epi layer, N+ substrate
++					and P+ diffusion
+PROFILE		N-TYPE N.PEAK=1.0E17 UNIF OUT.FILE=MDEX6DS
+PROFILE		N-TYPE N.PEAK=5.0E18 Y.MIN=2.0 DEPTH=2.0 Y.CHAR=0.1
+PROFILE		P-TYPE N.PEAK=1.0E20 JUNC=0.3 WIDTH=1.0 XY.RATIO=0.75
+
+COMMENT	  Grid refinement based on doping
+REGRID		DOPING LOG RATIO=1 SMOOTH=1 Y.MAX=1.0
++					IN.FILE=MDEX6DS OUT.FILE=MDEX6MS
+
+PLOT.2D		GRID TITLE="Example 6 - Mesh" SCALE FILL
+
+COMMENT		Specify physical models to use
+$$MODELS		CCSMOB FLDMOB CONSRH AUGER BGN
+MODELS		CONSRH AUGER BGN
+
+COMMENT		Calculate a steady state solution with a reverse bias of
++					3.0 volts. Perform a zero carrier solution to use as an
++					initial guess for the full two carrier solution below.
+SYMBOL		CARR=0
+METHOD		DAMPED
+SOLVE			V(Drain) = -3.0
+
+COMMENT		Attach a 1 kOhm resistor and a 100 fF capacitor to the
++					Drain. These simulate the loading of an external circuit.
+CONTACT		NAME=Drain RESIS=1.0E3 CAPAC=1.0E-13 PRINT
+
+COMMENT		Specify a log file for storing the terminal data
+LOG				OUT.FILE=MDEX6I
+
+COMMENT		Switch to Newton and two carriers and solve for the 
++					time=0 reverse bias solution
+SYMBOL		NEWTON CARRIERS=2
+SOLVE
+
+COMMENT		Create the ion track with a PHOTOGEN statement. The
++					linear energy transfer data vs. depth for a 100 MeV argon
++					atom incident on silicon is read from the file mde6let.
+
+PHOTOGEN	X.START=0.0 X.END=0.0 Y.START=0.0 Y.END=4.0 DCHR=0.2
++					T0=3.0E-12 TC=1.5E-12 LETFILE=mde6let PC.UNITS GAUSS
+
+COMMENT		Simulate the 1st 100 picosenconds of the transient response
+SOLVE			TSTEP=0.5E-12 TSTOP=100E-12 OUT.FILE=MDE6S01
+
+COMMENT		Plot the terminal characteristics.
+PLOT.1D		X.AXIS=TIME Y.AXIS=I(Drain)
++					POINTS BOTTOM=-8E-3 COLOR=2
++					TITLE="Example 6 - Drain Current"
+PLOT.1D		X.AXIS=TIME Y.AXIS=V(Drain) POINTS TOP=-2.2 COLOR=2
++					TITLE="Example 6 - Drain Voltage"

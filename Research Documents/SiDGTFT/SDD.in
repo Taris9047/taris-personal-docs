@@ -1,0 +1,68 @@
+go atlas
+TITLE Silicon Drift Detector
+#
+mesh 
+x.mesh	loc=0.00 spacing=1
+x.mesh	loc=45 spacing=1
+#
+# Top Contact
+y.mesh	loc=0.150 spacing=.1 
+# Top n+ contact
+y.mesh	loc=0.200 spacing=.01 
+# crystalline Silicon
+y.mesh	loc=250.200 spacing=10 
+# bottom n+ contact
+y.mesh	loc=250.250 spacing=.01 
+# Bottom Contact
+y.mesh	loc=250.400 spacing=.1 
+#
+#
+#  Region Definitions
+#  1: Top n+, 2: c-Si, 3: Bottom n+
+#
+region	num=1 y.min=0.15 y.max=0.200 silicon
+region	num=2 y.min=0.200 y.max=250.200 silicon
+region	num=3 y.min=250.200 y.max=250.250 silicon
+#
+#  Electrode Definitions
+#
+electrode	num=1 x.min=0 x.max=45 y.min=0 y.max=0.15 name=top
+electrode	num=2 x.min=0 x.max=45 y.min=250.250 y.max=250.400 name=bottom
+#
+#  Doping Profiles for n+ regions
+#
+doping	region=1 uniform concentration=1e18 n.type
+doping	region=3 uniform concentration=1e18 n.type
+#
+#  Contacts
+#
+contact	num=1 aluminum
+contact num=2 aluminum
+models	temp=300
+#
+#  Setting up calculation environment
+#
+method	itlimit=50
+solve	init
+#
+save	outf=SDD.str
+#
+tonyplot	SDD.str
+#
+#  Actual calculation begins
+#
+method	gummel newton
+solve v1=0.0 v2=0.0
+solve v1=1.0
+solve v2=1.0
+#
+method newton
+solve v1=1 vfinal=10 vstep=1 name=top
+solve v2=1 vfinal=20 vstep=1 name=bottom
+save outf=SDD_Dark.str
+#
+tonyplot	SDD_Dark.str
+#
+quit
+
+

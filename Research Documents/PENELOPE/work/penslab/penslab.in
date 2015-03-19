@@ -1,0 +1,30 @@
+TITLE  Aluminium foil
+
+       >>>>>>>> Source definition.
+SKPAR  1        [Primary particles: 1=electron, 2=photon, 3=positron]
+SENERG 500.e3           [Initial energy (monoenergetic sources only)]
+SPOSIT 0 0 -1                      [Coordinates of the source centre]
+SDIREC 0.0 0.0                   [Beam axis direction angles, in deg]
+SAPERT 0.0                                    [Beam aperture, in deg]
+
+       >>>>>>>> Material data and simulation parameters.
+SIMPAR 1.0e4 1.0e4 1.0e4 0.10 0.10 1.0e3 -1.0e3 [EABSs,C1,C2,Wcc,Wcr]
+PFNAME al.mat               [Material definition file, 20 characters]
+
+       >>>>>>>> Geometry definition.
+THICKN 0.02                                   [Slab thickness, in cm]
+DSMAX  0.004                             [Maximum step length, in cm]
+
+       >>>>>>>> Counter array dimensions and pdf ranges.
+NBE    0 500.e3 100               [Energy interval and no. of E-bins]
+NBTH   90                     [No. of bins for the polar angle THETA]
+NBZ    100                         [No. of bins for the Z-coordinate]
+NBTL   0 0 100             [Track-length interval and no. of TL-bins]
+
+       >>>>>>>> Job properties
+RESUME dump1.dat               [Resume from this dump file, 20 chars]
+DUMPTO dump1.dat                  [Generate this dump file, 20 chars]
+DUMPP  60                                    [Dumping period, in sec]
+
+NSIMSH 1.0e8                    [Desired number of simulated showers]
+TIME   2.0e5                       [Allotted simulation time, in sec]

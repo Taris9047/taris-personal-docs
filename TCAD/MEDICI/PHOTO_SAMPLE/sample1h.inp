@@ -1,0 +1,20 @@
+TITLE			Synopsys MEDICI Example 6H - Single Event Upset Simulation
+COMMENT		Plot hole concentration contours and potential contours
++					at various simulation times
+
+COMMENT		Read in simulation structure
+MESH			IN.FILE=MDEX6MS
+
+LOOP			STEPS=4
+	ASSIGN		NAME=FILE C1=MDE6S03 C2=MDE6S08 C3=MDE6S14
+	+					C4=MDE6S24
+	ASSIGN		NAME=TIME C1=1.5 C2=5.2 C3=14 C4=100.0
+	
+	COMMENT		Load a solution file
+	LOAD			IN.FILE=@FILE
+	
+	COMMENT		Plot internal hole and potential distributions
+	PLOT.2D		BOUND TITLE="Holes & Potential, "@TIME" psec" SCALE
+	CONTOUR		HOLE LOG FILL MIN=4.0 DEL=2.0
+	CONTOUR		POTENTIAL MIN=-4.0 DEL=0.5
+L.END

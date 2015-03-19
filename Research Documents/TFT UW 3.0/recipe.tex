@@ -1,0 +1,338 @@
+% Recipe part. Be sure to define \subscript, \superscript macro prior to include.
+\chapter{Recipe}
+Time parameter was calculated using deposition rate and thickness in TFT design from previous section, section \ref{thickness}. For example, a-Si:H, although it has ranged value in section \ref{thickness}, recipe was calculated for 60-nm-thick film deposition. It is advised to re-calculate the time parameter according to one's design. 
+\section{PECVD}
+\subsection{WLO1}
+\begin{enumerate}
+  
+\item a-SiN$_{\textrm{x}}$:H (Hadi PL4)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      H\subscript{2} & NH\subscript{3} & SiH\subscript{4} & Pressure & Time & RF & Temp \\
+      \hline
+      100 & 17\footnotemark[2] & 4 & 1500 & 1030 & 40 & 350\footnotemark[3] \\
+      \hline
+    \end{tabular}
+    \footnotetext[2]{The MFC shows 14.7 if 16 used.}
+    \addtocounter{footnote}{1}
+    \footnotetext[3]{The temperature setting we used for TFT was 400.}
+    \addtocounter{footnote}{1}
+    \captionof{table}%
+    {Deposition rate: 17.45 nm/min, Etch rate (BHF): Around 1 nm/sec.}
+    \label{tab:nitrideHadi}
+  \end{center}
+  
+\item a-SiN$_{\textrm{x}}$:H (Mohammad/Kyung PL4)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline
+      NH\subscript{3} & SiH\subscript{4} & Pressure & Time & RF & Temp \\
+      \hline
+      100 & 5 & 400 & 1800 & 2 & 400 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 10 nm/min.}
+    \label{tab:nitrideMohammadKyung}
+  \end{center}	
+  
+\item a-Si:H (Hadi PL2)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline
+      SiH$_4$ & Pressure & Time & RF & Temp. \\
+      \hline
+      200 & 400 & 584 & 2 & 350 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 6.16 nm/min.}
+    \label{tab:a-SiHadi}
+  \end{center}
+  
+\item a-Si:H (Kodak PL2)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & Pressure & Time & RF & Temp. \\
+      \hline
+      20 & 400 & 334 & 2 & 350\footnotemark[4] \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 10.79 nm/min.}
+    \label{tab:a-SiKai}
+    \footnotetext[4]{The temperature setting for TFT run was 400}
+  \end{center}
+  We can use this recipe for a-Si:H predeposition before PECVD n+ nc-Si:H in PL3. The predep. usually takes 10 to 20 minutes. (600 sec)
+  
+\item a-Si:H (Mohammad/Kyung PL2)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & H\subscript{2} & Pressure & Time & RF & Temp. \\
+      \hline
+      20 & 200 & 400 & 400 & 2 & 400 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 9 nm/min.}
+    \label{tab:a-SiHMohammadKyung}
+  \end{center}
+  
+\item nc-Si:H (Mohammad/Kyung PL2)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & H\subscript{2} & Pressure & Time & RF & Temp \\
+      \hline
+      2 & 200 & 900 & 3600 & 2 & 400 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 1 nm/min.}
+    \label{tab:nc-SiHMohammadKyung}
+  \end{center}
+  
+\item n+ nc-Si:H (Mohammad, new, PL3)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & PH\subscript{3} & H\subscript{2} & Pressure & Time & RF & Temp. \\
+      \hline
+      2 & 1.5 & 200 & 900 & 3600 & 2 & 400 \\
+      \hline
+    \end{tabular}
+    \label{tab:n+nc-SiHMohammadNew}
+    \captionof{table}{Deposition rate: 1 nm/min (estimated).}
+  \end{center}
+  
+\item n+ a-Si:H (Kodak PL3)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & PH\subscript{3} & Pressure & Time & RF & Temp. \\
+      \hline
+      20 & 3 & 1800 & 462 & 3 & 350 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 7.8 nm/min.}
+    \label{tab:n+nc-SiHKodak}
+  \end{center}
+
+\item n+ nc-Si:H (Mohammad PL3)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & PH\subscript{3} & H\subscript{2} & Pressure & Time & RF & Temp. \\
+      \hline
+      1 & 1 & 250 & 1800 & 2117 & 10 & 400 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 1.7 nm/min.}
+    \label{tab:n+nc-SiHMohammad}
+  \end{center}
+  It was originated from CzangHo Lee's Thesis.
+  
+\item n+ nc-Si:H (Kyung PL3)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & PH\subscript{3} & H\subscript{2} & Pressure & Time & RF & Temp. \\
+      \hline
+      1 & 1 & 250 & 1800 & 3600 & 2 & 400 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition rate: 1 nm/min.}
+    \label{tab:n+nc-SiHKyung}
+  \end{center}
+
+\end{enumerate}
+% Section WLO1 end
+
+% Section Plasmatherm Begins
+\subsection{Plasmatherm}
+
+\begin{enumerate}
+  
+\item SiO\subscript{2} (HyunJung)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      N\subscript{2}O & SiH\subscript{4} & He & Pressure & Time & RF & Temp. \\
+      \hline
+      100 & 4 & 400 & 100 & 1800 & 100 & 260 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition Rate: 10 nm/min.}
+    \label{tab:SiO2HyunJung}
+  \end{center}
+
+\item a-SiN\subscript{x}:H (Karim)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & NH\subscript{3} & N\subscript{2} & Pressure & Time & RF & Temp. \\
+      \hline
+      4 & 80 & 80 & 400 & ?? & 150 & 260 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition Rate: ??}
+    \label{tab:SiNxKarim}
+  \end{center}
+
+\item a-Si:H (Karim)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & Pressure & Time & RF & Temp. \\
+      \hline
+      80 & 400 & ?? & 12 & 260 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition Rate: ??}
+    \label{tab:a-SiHKarim}
+  \end{center}
+  
+\item nc-Si:H (HyunJung)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline
+      SiH\subscript{4} & H\subscript{2} & Pressure & Time & RF & Temp. \\
+      \hline
+      5 & 500 & 900 & 1263 & 90 & 260 \\
+      \hline
+    \end{tabular}
+    \captionof{table}{Deposition Rate: 2.85 nm/min.}
+    \label{tab:nc-SiHHyunJung}
+  \end{center}
+  
+\item n+ nc-Si:H (HyunJung)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+    \hline
+    PH\subscript{3} & SiH\subscript{4} & H\subscript{2} & Pressure & Time & RF & Temp. \\
+    \hline
+    10 & 5 & 400 & 973 & 810 & 90 & 260 \\
+    \hline
+  \end{tabular}
+    \captionof{table}{Deposition Rate: 3.70 nm/min.}
+    \label{tab:n+nc-SiHHyunJung}
+  \end{center}
+  
+\end{enumerate}
+
+\section{Sputter}
+
+\subsection{Edwards}
+
+\begin{enumerate}
+  
+\item All Targets (Al, Moly, Cr)
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline
+      Ar & Pressure & Power & Time & Temp. \\ 
+      \hline  
+      30 & 5 & 250 & 1800 & room \\ 
+      \hline 
+    \end{tabular}  
+    \captionof{table}{Deposition Rate: 10 nm/min.}
+    \label{tab:Edwards}
+  \end{center}
+  
+\end{enumerate}
+
+\section{WLOS}
+
+\begin{enumerate}
+\item Aluminum
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline 
+      Program & Ar & DC & Pressure & Time & Temp. \\ 
+      \hline 
+      wlosfull & 50 & 300 & 9 & 1500\footnotemark[5], 26000\footnotemark[6] & room \\ 
+      \hline 
+    \end{tabular}
+    \footnotetext[5]{For S-D contacts and gate (60 nm)}
+    \footnotetext[6]{For L3 electrode with wire bonding (path electrode)}
+    \captionof{table}{Deposition Rate: 2.3 nm/min. (Very Slow) %
+      But, it provides at least reliable surface profile ($\pm$2 nm). 
+      Etch Rate: around 10 nm/min.}
+    \label{tab:WLOSAl}
+  \end{center}
+  
+\item Molybdnum
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline 
+      Program & Ar & RF & Pressure & Time & Temp. \\ 
+      \hline 
+      wlosfull & 50 & 300 & 5.6 & 1200 & room \\ 
+      \hline 
+    \end{tabular}
+    \captionof{table}{Deposition Rate: 3.33 nm/min. (Very Slow) %
+      But, it provides very good surface (flat) profile.}
+    \label{tab:WLOSMo}
+  \end{center}  
+
+\end{enumerate}
+
+\section{RIE}
+\begin{enumerate}
+  
+\item From Hyun-Jung
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline
+      SF\subscript{6} & O\subscript{2} & DC & Pressure & Etch Rate \\ 
+      \hline 
+      45 & 5 & -40 & 50 & $<$ 5 nm/sec \\ 
+      \hline 
+    \end{tabular} 	
+    \captionof{table}{Etch Rate: 300/70 nm a-SiN\subscript{x}:H(Hadi)/a-Si:H(Kodak) structure took a bit less than 4.5 mins for complete etch.}
+    \label{tab:RIE-HJLEE}
+  \end{center} 
+
+\item From Hadi
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline
+      SF\subscript{6} & O\subscript{2} & DC & Pressure & Etch Rate \\ 
+      \hline 
+      50 & 5 & -80 & 50 & faster than above \\ 
+      \hline 
+    \end{tabular} 	
+    \captionof{table}{Etch Rate: 200/70 nm a-SiN\subscript{x}:H(Hadi)/a-Si:H(Hadi) structure took more than 5 mins for complete etch.}
+    \label{tab:RIE-HADI}
+  \end{center} 
+
+\end{enumerate}
+
+\section{Miscellaneous}
+\subsection{Photoresists}
+\begin{enumerate}
+\item AZ300
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline 
+      \multicolumn{2}{|c|}{1\superscript{st} Step}  &  \multicolumn{2}{|c|}{2\superscript{nd} Step}  & Thickness (nm) \\ 
+      \hline 
+      3 sec & 500 rpm & 30 sec & 4000 rpm & 800 -- 900 \\ 
+      \hline 
+    \end{tabular}
+    \captionof{table}{Standard Photoresist.}
+    \label{tab:PRSTD} 
+  \end{center}
+  
+\item AZ3312
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|}
+      \hline 
+      \multicolumn{2}{|c|}{1\superscript{st} Step}  &  \multicolumn{2}{|c|}{2\superscript{nd} Step}  & Thickness (nm) \\ 
+      \hline 
+      3 sec & 500 rpm & 30 sec & 4000 rpm & 700 -- 800 \\ 
+      \hline 
+    \end{tabular}
+    \captionof{table}{Photoresist from UWO.}
+    \label{tab:PRUWO} 
+  \end{center}
+  
+\end{enumerate}

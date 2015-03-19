@@ -1,0 +1,48 @@
+C
+C *****************************************
+C ****     PENGEOM (version 2005)      ****
+C ****  Constructive Quadric Geometry  ****
+C *****************************************
+C
+C
+C
+C ************  Genealogical tree. 
+C
+C 
+C *** MODULE =    1,  KMOTH =    5,  MAT =  1
+C KDGHT =    1
+C KSURF =    1    2    3
+C KFLAG =    2    1    1
+C 
+C *** MODULE =    2,  KMOTH =    5,  MAT =  2
+C KDGHT =    2
+C KSURF =    4    5    6    7
+C KFLAG =    2    1    2    1
+C 
+C *** MODULE =    3,  KMOTH =    5,  MAT =  3
+C KDGHT =    3
+C KSURF =    7    8    9
+C KFLAG =    1    2    1
+C 
+C *** MODULE =    4,  KMOTH =    5,  MAT =  4
+C KDGHT =    4
+C KSURF =   10   11   12   13
+C KFLAG =    2    1    1    1
+C 
+C *** MODULE =    5,  KMOTH =    0,  MAT =  3
+C KDGHT =    1    2    3    4    5
+C KSURF =    1   11   12   13    2    3    4    5    6    7    8    9   10
+C KFLAG =    2    1    1    1    4    4    4    4    4    4    4    4    4
+C
+C
+C ************  Adequacy of the geometry definition.
+C
+C The largest number of bodies in a module or
+C     bodies limiting a single body is ............    5
+C The largest number of limiting surfaces for
+C     a single body or module is ..................   13
+C
+C The simulation of this geometry will be relatively fast,
+C     no further optimization seems to be required.
+C
+C ************  The end.

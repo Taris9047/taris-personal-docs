@@ -1,0 +1,115 @@
+
+
+   ********************************************
+   **   Program PENMAIN.  Input data file.   **
+   ********************************************
+
+   Date and time: 22th Oct 2008. 14:17:23
+
+   Charged-particle transport in uniform EM fields.                                                                        
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Source description.
+   Primary particles: electrons
+   Initial energy =  6.000000E+06 eV
+   Coordinates of centre:     SX0 =  0.000000E+00 cm
+                              SY0 =  0.000000E+00 cm
+                              SZ0 =  0.000000E+00 cm
+   Beam direction angles:   THETA =  0.000000E+00 deg
+                              PHI =  0.000000E+00 deg
+   Beam aperture:           ALPHA =  0.000000E+00 deg
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Material data and simulation parameters.
+   Number of different materials =  1
+
+   ****  1st material
+   Electron absorption energy =  1.000000E+05 eV
+     Photon absorption energy =  1.000000E+04 eV
+   Positron absorption energy =  1.000000E+05 eV
+   Electron-positron simulation parameters:
+    C1 = 1.000000E-02,      C2 = 1.000000E-02
+   Wcc = 1.000000E+05 eV,  Wcr = 1.000000E+04 eV
+
+   PENELOPE's material definition file: pm_field.mat        
+
+  >>> SUMGA. Gauss adaptive-bipartition quadrature.
+  XL = 1.957341781488E+01,  XU = 2.154434690032E+01,  TOL = 1.0E-10
+  NCALLS = 10940,  SUMGA = 3.9006406797575E+00,  ERR = 2.0E-03
+  Number of open subintervals = 256
+  WARNING: the required accuracy has not been attained.
+
+
+   PENGEOM's geometry definition file: pm_field.geo        
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Maximum allowed step lengths of electrons and positrons.
+   * Body =   1,   DSMAX =  1.000000E+20 cm
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Energy and angular distributions of emerging particles.
+   E:       NBE = 100,  EMIN = 0.000000E+00 eV,  EMAX = 6.000000E+06 eV
+   Theta:  NBTH =  90
+   Phi:    NBPH =  60
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Job characteristics.
+
+   Number of showers to be simulated = 1.000000E+00
+   Computation time available =  3.000000E+02 sec
+
+
+   ------------------------------------------------------------------------
+
+   E-field (V/cm)  = -1.5000000E+04 -1.5000000E+04  0.0000000E+00
+
+   M-field (gauss) =  0.0000000E+00  0.0000000E+00  0.0000000E+00
+
+
+
+
+
+   ***********************************
+   **   Program PENMAIN. Results.   **
+   ***********************************
+
+   Simulation time .........................  1.559758E-01 sec
+   Simulation speed ........................  6.411250E+00 showers/sec
+
+
+   Simulated primary showers ...............  1.000000E+00
+
+   Transmitted primary particles ...........  0.000000E+00
+   Backscattered primary particles .........  0.000000E+00
+   Absorbed primary particles ..............  1.000000E+00
+
+   Fractional transmission ............  0.000000E+00 +- 0.0E+00
+   Fractional backscattering ..........  0.000000E+00 +- 0.0E+00
+   Fractional absorption ..............  1.000000E+00 +- 0.0E+00
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 0.000000E+00 | 0.000000E+00 | 0.000000E+00 |
+   |               |  +- 0.0E+00  |  +- 0.0E+00  |  +- 0.0E+00  |
+   --------------------------------------------------------------
+   | backscattered | 0.000000E+00 | 0.000000E+00 | 0.000000E+00 |
+   |               |  +- 0.0E+00  |  +- 0.0E+00  |  +- 0.0E+00  |
+   --------------------------------------------------------------
+   |   absorbed    | 3.000000E+00 | 2.000000E+00 | 0.000000E+00 |
+   |               |  +- 0.0E+00  |  +- 0.0E+00  |  +- 0.0E+00  |
+   --------------------------------------------------------------
+
+   Average deposited energies (bodies):
+      Body    1 ......  5.996498E+06 +- 1.4E-01 eV    (effic. = 1.10E+17)
+
+   Last random seeds = 2095862915 ,  611161392
+
+
+   ***  END  ***

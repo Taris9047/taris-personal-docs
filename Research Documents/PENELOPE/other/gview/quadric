@@ -1,0 +1,14 @@
+----------------------------------------------------------------
+         Visualization of reduced quadric surfaces.
+Define the desired quadric (surface 1) by entering its indices.
+The region with side pointer -1 (inside the quadric) corresponds
+to MATERIAL=1.
+0000000000000000000000000000000000000000000000000000000000000000
+SURFACE (   1)   Reduced quadric
+INDICES=( 1, 1,-1, 0, 1)
+0000000000000000000000000000000000000000000000000000000000000000
+BODY    (   1)   The interior of the quadric
+MATERIAL(   1)
+SURFACE (   1), SIDE POINTER=(-1)
+0000000000000000000000000000000000000000000000000000000000000000
+END      0000000000000000000000000000000000000000000000000000000

@@ -1,0 +1,334 @@
+TITLE			Si Drift Detector
+
+COMMENT		Simulation Settings
+COMMENT		Potential Extraction Mode (ON:1, OFF:0)
+ASSIGN		NAME=PEXT N.VAL=0
+
+COMMENT		Photo-generation simulation mode (ON:1, OFF:0)
+ASSIGN		NAME=PGEN N.VAL=0
+IF 				COND=(@PGEN=1)
+	ASSIGN		NAME=PDECK C.VAL="../XRAY/inp/PHOTOGEN_5keV.inp"
+ELSE			COND=(@PGEN=0)
+	ASSIGN		NAME=PDECK C.VAL="../XRAY/inp/PHOTOGEN.inp"
+IF.END
+
+COMMENT		2D Plot Mode (ON:1, OFF:0)
+ASSIGN		NAME=2DPLOT N.VAL=0
+
+COMMENT		Plot Dark Condition (ON:1, OFF:0)
+ASSIGN		NAME=PLOTDARK N.VAL=1
+
+COMMENT		Use TRAPS? (ON:1, OFF:0)
+ASSIGN		NAME=USTRP N.VAL=1
+
+COMMENT		Plot Band Diagrams? (ON:1, OFF:0)
+ASSIGN		NAME=PLTBAND N.VAL=1
+
+COMMENT		Setting up Bias Condition
+ASSIGN		NAME=BGATE N.VAL=19
+ASSIGN		NAME=BDRAIN N.VAL=19
+ASSIGN		NAME=BBACK N.VAL=49
+
+CALL			FILE=./SiTFTDetectorMesh.inp
+IF				COND=(@2DPLOT=1)
+	PLOT.2D		BOUNDARY REGION JUNCTION FILL LABELS CLEAR TITLE="Si TFT Detector"
+IF.END
+
+COMMENT		Specify Electrode Characteristics
+CONTACT		NUM=1 ALUMINUM
+CONTACT		NUM=2 
+
+COMMENT		Specify Optical Parameters
+MATERIAL	A-SILICON EG300=@EGaSI
+MATERIAL	SILICON EG300=@EGSI
+
+IF				COND=(@USTRP=1)
+	COMMENT		Calculate characteristic for holes/electron
+	ASSIGN		NAME=PCHR N.VAL=(-0.25-@EV)*LOG(1E20/8E13) PRINT
+	COMMENT		Generate hole traps.
+	TRAP			DISTR N.TOT="-(8E13+1E20*EXP(-(@FENER-@EV)/@PCHR))"
+	+					COND="(@FENER<0)" PRINT
+	+					X.PLOT=0.38 Y.PLOT=4 OUT.FILE=HOLETRAP.IVL
+	+					TAUN="1E-5" TAUP="1E-6"
+	ASSIGN		NAME=NCHR N.VAL=(@EC-0.4)*LOG(1E17/1E13) PRINT
+	COMMENT		Generate electron traps.
+	TRAP			DISTR N.TOT="(1E13+1E17*EXP((@FENER-@EC)/@NCHR))"
+	+					COND="(@FENER>0)" PRINT
+	+					X.PLOT=0.38 Y.PLOT=4 OUT.FILE=ELECTRAP.IVL
+	+					TAUN="1E-5" TAUP="1E-6"
+IF.END
+
+COMMENT		Solving initial conditions
+MODELS		CONSRH AUGER BGN
+SYMB			GUMM CARR=0
+SOLVE     V1=0.0 OUT.FILE="SiTFT.INI"
+SYMB			NEWT CARR=2
+METHOD		N.DAMP 
+
+IF				COND=(@PLOTDARK=1)
+	COMMENT		Dark Current Evaluation
+	COMMENT		Electrodes
+	+					1: Gate, 2: Bottom Electrode, 3: Source, 4: Drain
+	LOG				OUT.FILE="SiTFT.IVL" 
+	SOLVE			V1=0.0
+	SOLVE			V2=0.0
+	SOLVE			V3=0.0 ELEC=3
+	SOLVE			V4=0.0 ELEC=4
+
+	SOLVE			V4=0.0 VSTEP=0.1 NSTEP=5 ELEC=4
+	SOLVE			V4=1 VSTEP=1 NSTEP=@BDRAIN ELEC=4
+
+	SOLVE			V2=0.0 VSTEP=0.1 NSTEP=5 ELEC=2
+	SOLVE			V2=1 VSTEP=1 NSTEP=@BBACK ELEC=2
+
+	SOLVE			V1=0.0 VSTEP=0.1 NSTEP=5 ELEC=1
+	SOLVE			V1=1 VSTEP=1 NSTEP=@BGATE ELEC=1
+
+	SOLVE			OUT.FILE="SiTFTDK.INI"
+	LOG				CLOSE
+
+	COMMENT		Transfer Characteristic (Dark)
+	PLOT.1D		IN.FILE="SiTFT.IVL" X.AX=V1 Y.AX=I4
+	+					POINTS PRINT
+	+					TITLE="Transfer Characteristic (Dark)"
+	+					OUT.FILE="SiTFTTRNSDK.dat"
+
+	IF				COND=(@PLTBAND=1)
+		COMMENT		Potential at Source (Dark)
+		LOAD			IN.FILE=SiTFTDK.INI
+		PLOT.1D		
+		+					X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					COND NEG PRINT
+		+					TITLE="Band Diagram at Source (Dark)"
+		+					OUT.FILE="CONDataAt10um.dat"
+		PLOT.1D		X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					VAL UNCH NEG PRINT
+		+					OUT.FILE="VALDataAt10um.dat"
+		PLOT.1D		X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					QFN UNCH NEG COL=2
+		+					OUT.FILE="FermiDataAt10um.dat"
+
+		COMMENT		Potential at Channel (Dark)
+		PLOT.1D		
+		+					X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					COND NEG PRINT
+		+					TITLE="Band Diagram at Channel (Dark)"
+		+					OUT.FILE="CONDataAt22.5um.dat"
+		PLOT.1D		X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					VAL UNCH NEG PRINT
+		+					OUT.FILE="VALDataAt22.5um.dat"
+		PLOT.1D		X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					QFN UNCH NEG COL=2 PRINT
+		+					OUT.FILE="FermiDataAt22.5um.dat"
+
+		COMMENT		Potential at Drain (Dark)
+		PLOT.1D		
+		+					X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					COND NEG PRINT
+		+					TITLE="Band Diagram at Drain (Dark)"
+		+					OUT.FILE="CONDataAt35um.dat"
+		PLOT.1D		X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					VAL UNCH NEG PRINT
+		+					OUT.FILE="VALDataAt35um.dat"
+		PLOT.1D		X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					QFN UNCH NEG COL=2 PRINT
+		+					OUT.FILE="FermiDataAt35um.dat"
+	IF.END
+
+	COMMENT		Carrier Concentration (Dark)
+	PLOT.1D		
+	+					X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					ELECTRON COL=4 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Electron Concentration (Dark) at 22.5"
+	+					OUT.FILE="ELECCAt22.5um.dat"
+	PLOT.1D		
+	+					X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					HOLES COL=3 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Hole Concentration at (Dark) 22.5"
+	+					OUT.FILE="HOLECAt22.5um.dat"
+
+	PLOT.1D		
+	+					X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					ELECTRON COL=4 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Electron Concentration (Dark) at 35"
+	+					OUT.FILE="ELECCAt35um.dat"
+	PLOT.1D		
+	+					X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					HOLES COL=3 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Hole Concentration (Dark) at 35"
+	+					OUT.FILE="HOLECAt35um.dat"
+IF.END
+
+IF				COND=(@PGEN=1)
+	COMMENT		Photogeneration Evaluation
+	SYMB			GUMM CARR=0
+	SOLVE			INITIAL
+	SYMB			NEWT CARR=2
+	METHOD		N.DAMP 
+	SOLVE     V1=0.0 V2=0.0 V3=0.0 V4=0.0
+	$$LOG				OUT.FILE="SiTFTXR.LOG"
+	COMMENT   Photogeneration Statements generated by Python script comes here.
+	CALL			FILE=@PDECK
+	SOLVE			OUT.FILE=SiTFTDXR0000
+	COMMENT		For PHOTOGEN Debug
+	
+	$$SOLVE			TSTEP=.5E-12 TSTOP=100E-12 OUT.FILE="SiTFTDXR0000"
+	$$LOG				CLOSE
+	
+	ASSIGN		NAME=INFILEXR C.VAL=SiTFTDXR0000
+	COMMENT		Photogeneration Plots
+	LOAD			IN.FILE=@INFILEXR
+	PLOT.1D		
+	+					X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					TITLE="Photogeneration at 22.5 um"
+	+					PHOTOGEN PRINT
+	+					BOTTOM=1 TOP=1E15 Y.LOG
+	+					OUT.FILE="PGENAt22.5umXR.dat"
+	
+	LOAD			IN.FILE=@INFILEXR
+	LOG				OUT.FILE=SiTFTXR.IVL
+	COMMENT		Electrodes
+	+					1: Gate, 2: Bottom Electrode, 3: Source, 4: Drain
+	SOLVE			V4=0.0 VSTEP=0.1 NSTEP=5 ELEC=4
+	SOLVE			V4=1 VSTEP=1 NSTEP=@BDRAIN ELEC=4
+
+	SOLVE			V2=0.0 VSTEP=0.1 NSTEP=5 ELEC=2
+	SOLVE			V2=1 VSTEP=1 NSTEP=@BBACK ELEC=2
+
+	SOLVE			V1=0.0 VSTEP=0.1 NSTEP=5 ELEC=1
+	SOLVE			V1=1 VSTEP=1 NSTEP=@BGATE ELEC=1
+
+	SOLVE			OUT.FILE="SiTFTPHOTO.INI"
+	LOG				CLOSE
+
+	ASSIGN		NAME=INFILEXR C.VAL=SiTFTPHOTO.INI
+	COMMENT		Transfer Characteristic (Photo)
+	PLOT.1D		IN.FILE=SiTFTXR.IVL X.AX=V1 Y.AX=I4
+	+					POINTS PRINT
+	+					TITLE="Transfer Characteristic (Photo)"
+	+					OUT.FILE="SiTFTTRANSXR.dat"
+
+	IF				COND=(@PLTBAND=1)
+		COMMENT		Potential at Source
+		LOAD			IN.FILE=@INFILEXR
+		PLOT.1D		
+		+					X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					COND NEG PRINT
+		+					TITLE="Band Diagram at Source (Photo)"
+		+					OUT.FILE="CONDataAt10umXR.dat"
+		PLOT.1D		X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					VAL UNCH NEG PRINT
+		+					OUT.FILE="VALDataAt10umXR.dat"
+		PLOT.1D		X.ST=10 X.EN=10 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					QFN UNCH NEG COL=2
+		+					OUT.FILE="FermiDataAt10umXR.dat"
+
+		COMMENT		Potential at Channel
+		PLOT.1D		
+		+					X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					COND NEG PRINT
+		+					TITLE="Band Diagram at Channel (Photo)"
+		+					OUT.FILE="CONDataAt22.5umXR.dat"
+		PLOT.1D		X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					VAL UNCH NEG PRINT
+		+					OUT.FILE="VALDataAt22.5umXR.dat"
+		PLOT.1D		X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					QFN UNCH NEG COL=2 PRINT
+		+					OUT.FILE="FermiDataAt22.5umXR.dat"
+
+		COMMENT		Potential at Drain
+		PLOT.1D		
+		+					X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					COND NEG PRINT
+		+					TITLE="Band Diagram at Drain (Photo)"
+		+					OUT.FILE="CONDataAt35umXR.dat"
+		PLOT.1D		X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					VAL UNCH NEG PRINT
+		+					OUT.FILE="VALDataAt35umXR.dat"
+		PLOT.1D		X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+		+					QFN UNCH NEG COL=2 PRINT
+		+					OUT.FILE="FermiDataAt35umXR.dat"
+	IF.END
+	
+	COMMENT		Carrier Concentration (Photo)
+	PLOT.1D		
+	+					X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					ELECTRON COL=4 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Electron Concentration (Photo) at 22.5"
+	+					OUT.FILE="ELECCAt22.5umXR.dat"
+	PLOT.1D		
+	+					X.ST=22.5 X.EN=22.5 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					HOLES COL=3 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Hole Concentration (Photo) at 22.5"
+	+					OUT.FILE="HOLECAt22.5umXR.dat"
+
+	PLOT.1D		
+	+					X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					ELECTRON COL=4 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Electron Concentration (Photo) at 35"
+	+					OUT.FILE="ELECCAt35umXR.dat"
+	PLOT.1D		
+	+					X.ST=35 X.EN=35 Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH
+	+					HOLES COL=3 PRINT
+	+					LEFT=@GTH+@TOX+@TCON RIGHT=@GTH+@TOX+@TCON+@TSI+@TCON+@GTH Y.LOG
+	+					TITLE="Hole Concentration (Photo) at 35"
+	+					OUT.FILE="HOLECAt35umXR.dat"
+
+
+IF.END
+
+
+IF				COND=(@2DPLOT=1)
+	COMMENT		Potential and photogeneration 2D Plot
+	LOAD			IN.FILE=SiTFTDXR0001
+	PLOT.2D		BOUNDARY LABELS 
+	+					TITLE="Photogeneration"
+	CONTOUR		PHOTOGEN LOG FILL
+	
+	LOOP			STEPS=4
+		ASSIGN		NAME=PLOTFILE 
+		+					C1=SiTFTDXR0001 C2=SiTFTDXR0003
+		+				  C3=SiTFTDXR0007 C4=SiTFTDXR0009
+		ASSIGN		NAME=PTIME 
+		+					C1=20 C2=40 C3=80 C4=100
+		
+		LOAD			IN.FILE=@PLOTFILE
+		PLOT.2D		BOUNDARY LABELS 
+		+					TITLE="Potential/Hole Conc. at "@PTIME" psec"
+		CONTOUR		HOLE LOG FILL
+		CONTOUR		POTENTIAL
+		
+	L.END
+IF.END
+
+COMMENT		Extracting Potential from entire device
+IF				COND=(@PEXT=1)
+	LOOP			STEPS=46 
+		ASSIGN		NAME=XPOS N.VAL=0 DELTA=1
+		ASSIGN		NAME=CONNAME C.VALUE=CONDat.000 DELTA=1
+		ASSIGN		NAME=VALNAME C.VALUE=VALDat.000 DELTA=1
+		ASSIGN		NAME=FERNAME C.VALUE=FERMIDat.000 DELTA=1
+		
+		PLOT.1D		PRINT CLEAR
+		+					X.ST=@XPOS X.EN=@XPOS Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TPOLY+@GTH
+		+					COND NEG
+		+					OUT.FILE=@CONNAME
+		PLOT.1D		PRINT
+		+					X.ST=@XPOS X.EN=@XPOS Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TPOLY+@GTH
+		+					VAL UNCH NEG
+		+					OUT.FILE=@VALNAME					
+		PLOT.1D		PRINT
+		+					X.ST=@XPOS X.EN=@XPOS Y.ST=0 Y.EN=@GTH+@TOX+@TCON+@TSI+@TPOLY+@GTH
+		+					QFN UNCH NEG COL=2
+		+					OUT.FILE=@FERNAME
+	L.END
+IF.END
+
+END

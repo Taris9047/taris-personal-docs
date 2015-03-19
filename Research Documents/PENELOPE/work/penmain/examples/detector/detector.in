@@ -1,0 +1,37 @@
+TITLE  Response of a NaI scintillation detector.
+
+       >>>>>>>> Source definition.
+SKPAR  2        [Primary particles: 1=electron, 2=photon, 3=positron]
+SENERG 1.25e6           [Initial energy (monoenergetic sources only)]
+SPOSIT 0 0 -10                            [Coordinates of the source]
+SDIREC 0 0                       [Beam axis direction angles, in deg]
+SAPERT 10                                     [Beam aperture, in deg]
+
+       >>>>>>>> Material data and simulation parameters.
+NMAT   3                      [Number of different materials, .le.10]
+SIMPAR 1 1.0e5 1.0e3 1.0e5 0.1 0.1 1e4 1e3     [M,EABS,C1,C2,WCC,WCR]
+SIMPAR 2 1.0e5 1.0e3 1.0e5 0.1 0.1 1e4 1e3     [M,EABS,C1,C2,WCC,WCR]
+SIMPAR 3 1.0e5 1.0e3 1.0e5 0.1 0.1 1e4 1e3     [M,EABS,C1,C2,WCC,WCR]
+
+       The following material data file must be copied from directory
+       ..\mains\pencyl\ to the working directory.
+PFNAME welld.mat                 [Material definition file, 20 chars]
+
+       >>>>>>>> Geometry definition file.
+GEOMFN detector.geo              [Geometry definition file, 20 chars]
+
+       >>>>>>>> Emerging particles. Energy and angular distributions.
+NBE    1e3 1.3e6 100              [E-interval and no. of energy bins]
+NBTH   45                     [No. of bins for the polar angle THETA]
+NBPH   18                   [No. of bins for the azimuthal angle PHI]
+
+       >>>>>>>> Energy deposition detectors (up to 5).
+ENDDET 1e3 1.3e6 100           [Energy window and number of channels]
+EDBODY 1                        [Active body; one line for each body]
+
+       >>>>>>>> Job properties
+RESUME dump1.dat               [Resume from this dump file, 20 chars]
+DUMPTO dump1.dat                  [Generate this dump file, 20 chars]
+DUMPP  60                                    [Dumping period, in sec]
+
+TIME   2.0e5                       [Allotted simulation time, in sec]

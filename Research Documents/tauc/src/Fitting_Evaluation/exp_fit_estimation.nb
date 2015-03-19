@@ -1,0 +1,220 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      8739,        211]
+NotebookOptionsPosition[      8412,        195]
+NotebookOutlinePosition[      8752,        210]
+CellTagsIndexPosition[      8709,        207]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", " ", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y", " ", "=", " ", 
+       RowBox[{"A", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", 
+          RowBox[{"k", "  ", 
+           RowBox[{"Exp", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"t", "-", 
+               StyleBox["x", "Item"]}], ")"}], "/", "alpha"}], "]"}]}]}], 
+         ")"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Labeled", "[", 
+      RowBox[{
+       RowBox[{"Plot", "[", 
+        RowBox[{"y", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", " ", "0", ",", " ", "950"}], "}"}], ",", " ", 
+         RowBox[{"AxesOrigin", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"500", ",", "344"}], "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImagePadding", " ", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"20", ",", "20"}], "}"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"20", ",", "20"}], "}"}]}], "}"}]}], ",", " ", 
+         RowBox[{"PlotRangePadding", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotRangeClipping", "\[Rule]", "False"}]}], "]"}], ",", " ", 
+       RowBox[{"Text", "[", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"TraditionalForm", "[", "y", "]"}], ",", " ", "14"}], "]"}],
+         "]"}], ",", " ", "Top"}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"A", ",", " ", "97", ",", " ", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", "\"\<A \>\"", "}"}], "]"}]}], "}"}], ",", " ", "80", ",",
+      " ", "100", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", " ", "\[Rule]", " ", "\"\<Labeled\>\""}]}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"k", ",", " ", "1", ",", " ", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", "\"\<k \>\"", "}"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"-", "100"}], ",", " ", "100", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", " ", "\[Rule]", " ", "\"\<Labeled\>\""}]}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"t", ",", " ", "300", ",", " ", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", "\"\<t \>\"", "}"}], "]"}]}], "}"}], ",", "  ", "0", ",",
+      " ", "400", ",", " ", "10", ",", " ", 
+     RowBox[{"Appearance", " ", "\[Rule]", " ", "\"\<Labeled\>\""}]}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"alpha", ",", " ", "1", ",", " ", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", "\"\<alpha \>\"", "}"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"-", "100"}], ",", " ", "100", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", " ", "\[Rule]", " ", "\"\<Labeled\>\""}]}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.506275443630266*^9, {3.506275518154969*^9, 3.5062755354329443`*^9}, {
+   3.5062756029982452`*^9, 3.50627571303018*^9}, 3.506275750549468*^9, {
+   3.506275880740541*^9, 3.506275915881217*^9}, {3.506275949404408*^9, 
+   3.5062760076687117`*^9}, {3.506276053842783*^9, 3.506276401486767*^9}, {
+   3.506276435197344*^9, 3.506276472189221*^9}, {3.506276512429294*^9, 
+   3.506276643514481*^9}, {3.5062766770233307`*^9, 3.506276694222353*^9}, {
+   3.506276746683052*^9, 3.506276763177335*^9}, {3.5062768798772297`*^9, 
+   3.5062768802055492`*^9}, 3.50627707205781*^9, {3.5062773333428373`*^9, 
+   3.506277387041691*^9}, 3.5062774217850018`*^9, {3.506277732247011*^9, 
+   3.506277778627573*^9}, {3.506277816440465*^9, 3.5062778217506638`*^9}, {
+   3.506277935920702*^9, 3.506278087323139*^9}, 3.506278175061914*^9, 
+   3.506278250232925*^9, {3.506278429731799*^9, 3.506278466449976*^9}, {
+   3.506278511206159*^9, 3.506278518564514*^9}, {3.506278621880381*^9, 
+   3.506278631398438*^9}, {3.506278690147375*^9, 3.506278697625347*^9}, {
+   3.506278796950529*^9, 3.506278811306202*^9}, {3.506278918522492*^9, 
+   3.506278919391315*^9}, {3.5062789517499332`*^9, 3.506278953572701*^9}, {
+   3.506278996067978*^9, 3.506279000920951*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = 97, $CellContext`alpha$$ = 
+    58, $CellContext`k$$ = 1, $CellContext`t$$ = 110, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`A$$], 97, 
+       Row[{"A "}]}, 80, 100, 1}, {{
+       Hold[$CellContext`k$$], 1, 
+       Row[{"k "}]}, -100, 100, 1}, {{
+       Hold[$CellContext`t$$], 300, 
+       Row[{"t "}]}, 0, 400, 10}, {{
+       Hold[$CellContext`alpha$$], 1, 
+       Row[{"alpha "}]}, -100, 100, 1}}, Typeset`size$$ = {
+    500., {170., 214.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`A$17170$$ = 
+    0, $CellContext`k$17171$$ = 0, $CellContext`t$17172$$ = 
+    0, $CellContext`alpha$17173$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = 97, $CellContext`alpha$$ = 
+        1, $CellContext`k$$ = 1, $CellContext`t$$ = 300}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`A$$, $CellContext`A$17170$$, 0], 
+        Hold[$CellContext`k$$, $CellContext`k$17171$$, 0], 
+        Hold[$CellContext`t$$, $CellContext`t$17172$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$17173$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      With[{$CellContext`y = $CellContext`A$$ (1 - $CellContext`k$$ 
+           Exp[($CellContext`t$$ - $CellContext`x)/$CellContext`alpha$$])}, 
+        Labeled[
+         Plot[$CellContext`y, {$CellContext`x, 0, 950}, AxesOrigin -> {0, 0}, 
+          ImageSize -> {500, 344}, ImagePadding -> {{20, 20}, {20, 20}}, 
+          PlotRangePadding -> {{0, 0}, {0, 3}}, PlotRangeClipping -> False], 
+         Text[
+          Style[
+           TraditionalForm[$CellContext`y], 14]], Top]], 
+      "Specifications" :> {{{$CellContext`A$$, 97, 
+          Row[{"A "}]}, 80, 100, 1, Appearance -> 
+         "Labeled"}, {{$CellContext`k$$, 1, 
+          Row[{"k "}]}, -100, 100, 1, Appearance -> 
+         "Labeled"}, {{$CellContext`t$$, 300, 
+          Row[{"t "}]}, 0, 400, 10, Appearance -> 
+         "Labeled"}, {{$CellContext`alpha$$, 1, 
+          Row[{"alpha "}]}, -100, 100, 1, Appearance -> "Labeled"}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{543., {277.34375, 282.65625}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.506278469845727*^9, {3.5062785131681557`*^9, 3.506278519277917*^9}, 
+   3.506278632936602*^9, 3.506278704107853*^9, 3.506278820759314*^9, 
+   3.506278921157312*^9, 3.506278955492325*^9, 3.506279001682789*^9}]
+}, Open  ]]
+},
+WindowSize->{640, 681},
+WindowMargins->{{22, Automatic}, {Automatic, 19}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 4603, 103, 178, "Input"],
+Cell[5173, 127, 3223, 65, 577, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

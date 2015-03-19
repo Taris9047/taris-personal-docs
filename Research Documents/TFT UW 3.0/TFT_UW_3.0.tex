@@ -1,0 +1,32 @@
+\documentclass[letterpaper,10pt,titlepage,oneside,final]{report}
+\usepackage{times}
+\usepackage{amsmath,amssymb,amstext} 
+\usepackage[pdftex]{graphicx} 
+\usepackage{geometry} 
+\usepackage{capt-of}
+\usepackage[bottom]{footmisc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+
+\geometry{
+  verbose,
+  dvips,
+  width=422.695pt, marginparsep=0pt, marginparwidth=0pt,
+  top=72.27pt, headheight=12pt, headsep=36pt, footskip=30pt, bottom=72.27pt
+}
+
+\title{TFT UW 3.0 \\ Process Note}
+\author{Kyung-Wook Shin}
+
+\begin{document}
+\maketitle
+
+\include{time_table}
+\include{process_step}
+\include{chk_and_proc}
+\include{recipe}
+
+\end{document}

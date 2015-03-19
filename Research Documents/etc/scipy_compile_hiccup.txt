@@ -1,0 +1,7 @@
+Three files to add '#include <complex.h>' for scipy installation.
+
+scipy/linalg/src/fblaswrap_veclib_c.c
+scipy/lib/blas/fblaswrap_veclib_c.c.src
+scipy/sparse/linalg/eigen/arpack/ARPACK/FWRAPPERS/veclib_cabi_c.c
+
+I guess installing from source would be far better than using pip or easy_install.

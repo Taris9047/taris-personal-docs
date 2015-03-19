@@ -1,0 +1,134 @@
+
+
+   ********************************************
+   **    PROGRAM PENSLAB. Input data file.   **
+   ********************************************
+
+   Date and time: 14th Oct 2008. 17:07:36
+
+   Aluminium foil                                                                                                          
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Source description.
+   Primary particles: electrons
+   Initial energy =  5.000000E+05 eV
+   Source coordinates:        SX0 =  0.000000E+00 cm
+                              SY0 =  0.000000E+00 cm
+                              SZ0 = -1.000000E+00 cm
+   Beam direction angles:   THETA =  0.000000E+00 deg
+                              PHI =  0.000000E+00 deg
+   Beam aperture:           ALPHA =  0.000000E+00 deg
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Material data and simulation parameters.
+
+   ****  1st material
+   Electron absorption energy =  1.000000E+04 eV
+     Photon absorption energy =  1.000000E+04 eV
+   Positron absorption energy =  1.000000E+04 eV
+   Electron-positron simulation parameters:
+    C1 = 1.000000E-01,      C2 = 1.000000E-01
+   Wcc = 1.000000E+03 eV,  Wcr =-1.000000E+03 eV
+
+   PENELOPE's material definition file: al.mat              
+
+  >>> SUMGA. Gauss adaptive-bipartition quadrature.
+  XL = 1.333521432163E+00,  XU = 1.467799267622E+00,  TOL = 1.0E-10
+  NCALLS = 11020,  SUMGA = 3.7420419009500E-01,  ERR = 9.8E-04
+  Number of open subintervals = 256
+  WARNING: the required accuracy has not been attained.
+
+
+   Slab thickness =  2.000000E-02 cm
+   Maximum step length, DSMAX =  4.000000E-03 cm
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Dimensions of counter arrays.
+   E:       NBE = 100,  EMIN = 0.000000E+00 eV,  EMAX = 5.000000E+05 eV
+   Theta:  NBTH =  90
+   Z:       NBZ = 100
+   TL:     NBTL = 100, TLMIN = 0.000000E+00 cm, TLMAX = 2.090231E-01 cm
+
+
+   ------------------------------------------------------------------------
+   >>>>>>  Job characteristics.
+   Resume simulation from previous dump file: dump1.dat           
+   Write final counter values on the dump file: dump1.dat           
+   Dumping period: DUMPP = 6.000000E+01
+
+   Number of showers to be simulated = 2.700000E+06
+   Computation time available =  6.000000E+01 sec
+
+
+   ------------------------------------------------------------------------
+
+
+
+   ***********************************
+   **   Program PENSLAB. Results.   **
+   ***********************************
+
+   Simulation time .........................  7.014274E+02 sec
+   Simulation speed ........................  4.604186E+03 showers/sec
+
+
+   Simulated primary particles .............  3.229502E+06
+
+   Transmitted primary particles ...........  2.728654E+06
+   Backscattered primary particles .........  2.995440E+05
+   Absorbed primary particles ..............  2.013040E+05
+
+   Fractional transmission ............  8.579434E-01 +- 8.0E-04
+   Fractional backscattering ..........  9.691742E-02 +- 5.9E-04
+   Fractional absorption ..............  6.233283E-02 +- 4.0E-04
+
+   Secondary-particle generation probabilities:
+                   ----------------------------------------------
+                   |  electrons   |   photons    |  positrons   |
+   --------------------------------------------------------------
+   |  transmitted  | 1.302863E-02 | 9.130200E-03 | 0.000000E+00 |
+   |               |  +- 1.9E-04  |  +- 1.6E-04  |  +- 0.0E+00  |
+   --------------------------------------------------------------
+   | backscattered | 4.165038E-03 | 3.039168E-03 | 0.000000E+00 |
+   |               |  +- 1.1E-04  |  +- 9.2E-05  |  +- 0.0E+00  |
+   --------------------------------------------------------------
+   |   absorbed    | 8.879097E-01 | 2.179593E-03 | 0.000000E+00 |
+   |               |  +- 1.9E-03  |  +- 7.8E-05  |  +- 0.0E+00  |
+   --------------------------------------------------------------
+
+
+   Mean number of events per primary track:
+      Hinges (soft events) ............  3.251777E+01 +- 7.0E-02
+      Hard elastic collisions .........  1.529968E+01 +- 4.8E-02
+      Hard inelastic collisions .......  1.101646E+01 +- 1.4E-02
+      Hard bremsstrahlung emissions ...  5.709580E-02 +- 4.0E-04
+      Inner-shell ionizations .........  0.000000E+00 +- 0.0E+00
+      Delta interactions ..............  5.625784E+00 +- 1.1E-02
+
+   Average final energy:
+      Transmitted particles ...........  3.802331E+05 +- 1.1E+02 eV
+      Backscattered particles .........  2.751809E+05 +- 5.3E+02 eV
+
+   Average track length:
+      Transmitted particles ...........  2.720979E-02 +- 1.8E-05 cm
+      Backscattered particles .........  4.830013E-02 +- 1.0E-04 cm
+      Absorbed particles ..............  7.448722E-02 +- 1.2E-04 cm
+
+   Mean value of the polar cosine of the exit direction:
+      Transmitted particles ...........  7.492793E-01 +- 3.7E-04
+      Backscattered particles ......... -6.982027E-01 +- 1.2E-03
+
+   Mean value of the polar angle of the exit direction:
+      Transmitted particles ...........  3.802558E+01 +- 3.3E-02 deg
+      Backscattered particles .........  1.373927E+02 +- 1.0E-01 deg
+
+   Average deposited energy ...........  1.510735E+05 +- 1.9E+02 eV
+                                         (efficiency = 8.41E+03)
+
+   Last random seeds =  474019614 ,  632036280
+
+
+   ***  END  ***

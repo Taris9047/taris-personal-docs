@@ -1,0 +1,6 @@
+TODO: 
+1. Extract more data for more exposure points. ** DONE **
+2. Get Linearity Curve. ** DONE **
+3. Optimize code for general use. ** DONE **
+
+TODO:

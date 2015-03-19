@@ -1,0 +1,12 @@
+Fitted parameters:
+3.4236e-07  -2.4767e-06   3.0638e-06
+
+Thus, we can expect,
+Ax^2 + Bx + C becomes,
+
+A(x+B/2A x)^2 - B^2/4A + C/A
+
+Thus, the saturation region equation will be,
+Ids = 3.4236e-7(Vgs - 5.0886)^2
+
+with a rough estimation of Vth = 5.0886 V

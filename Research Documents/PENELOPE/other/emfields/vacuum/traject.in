@@ -1,0 +1,9 @@
+0.00E0 0.00E0 +2.25E5                              E-field (V/cm)
+0.00E0 0.00E0 +1.25E4                             B-field (gauss)
+-1                                  electron(-1) or positron (+1)
+60 90                              initial direction angles (deg)
+10.0E6                                                energy (eV)
+50                                         trajectory length (cm)
+0.025                             upper limit of direction change
+0.025                                upper limit of energy change
+0.025                                 upper limit of field change

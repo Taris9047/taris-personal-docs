@@ -1,0 +1,70 @@
+go atlas
+TITLE Hybrid Silicon Drift Detector
+
+mesh 
+x.mesh	loc=0.00 spacing=1
+x.mesh	loc=45 spacing=1
+#
+# Top Contact
+y.mesh	loc=0.15 spacing=.5 
+# Top Nitride
+y.mesh	loc=0.450 spacing=.5 
+# crystalline Silicon
+y.mesh	loc=250.450 spacing=5 
+# bottom n+ contact
+y.mesh	loc=250.500 spacing=0.1 
+# Bottom Contact
+y.mesh	loc=250.650 spacing=0.1 
+#
+#
+#  Region Definitions
+#  1: Nitride, 2: c-Si 3: n+ Contact (either amorphous or crystalline)
+#
+region	num=1 y.min=0.15 y.max=0.450 nitride
+region	num=2 y.min=0.450 y.max=250.450 silicon
+region	num=3 y.min=250.450 y.max=250.500 silicon
+
+#
+#  Electrode Definitions
+#
+electrode	num=1 x.min=0 x.max=45 y.min=0 y.max=0.15 name=top_contact
+electrode	num=2 x.min=0 x.max=45 y.min=250.500 y.max=250.650 name=bottom_contact
+
+#
+#  Doping Profile for n+
+#
+doping	region=3 uniform concentration=1e18 n.type
+
+#
+#  Contacts
+#  1: Top Contact, 2: Bottom Contact
+#
+contact	num=1 aluminum
+contact	num=2 aluminum
+models	temp=300
+
+#
+#  Setting up calculation environment
+#
+method	itlimit=50
+solve	init
+
+save	outf=SiHDevice.str
+
+tonyplot	SiHDevice.str
+
+#  Actual calculation begins
+method	gummel newton
+solve v1=1.0
+solve v2=1.0
+
+method newton
+solve v1=1 vfinal=10 vstep=1 name=top_contact
+solve v2=1 vfinal=20 vstep=1 name=bottom_contact
+save outf=SiHDevice_Dark.str
+
+tonyplot	SiHDevice_Dark.str
+
+quit
+
+
